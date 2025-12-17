@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:45:26 by afretta-          #+#    #+#             */
-/*   Updated: 2025/10/17 11:57:59 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:02:17 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	is_space(char c)
 
 int	ft_atoi(const char *str)
 {
-	int	nb;
-	int	i;
-	int	sign;
+	int		nb;
+	int		i;
+	int		sign;
 
 	nb = 0;
 	i = 0;

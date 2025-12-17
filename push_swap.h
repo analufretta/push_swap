@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/16 17:07:23 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:27:27 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ typedef struct s_stack_node
 
 /* Stack Creation  && errors*/
 void	intitialize_stack_a(t_stack_node **a, char **argv);
+void	requisits_stack(char *array, t_stack_node **stack);
+
+/*Utils*/
+long	ps_atol(const char *str);
+
+
 
 /* ALgorithm */
 
