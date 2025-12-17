@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:07:39 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/17 16:27:01 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:38:47 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ void	intitialize_stack_a(t_stack_node **stack, char **argv)
 			error_and_free(stack);//TODO: free, write error and exit
 		j = 0;
 		while (array[j])
+		{
 			requisits_stack(array[j], stack);//TODO
 			j++;
 		}
 		free_array(array);//TODO
 		i++;
+	}
 }
 
 void	requisits_stack(char *array, t_stack_node **stack)
