@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+         #
+#    By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/15 15:40:08 by afretta-          #+#    #+#              #
-#    Updated: 2025/12/16 13:44:15 by afretta-         ###   ########.fr        #
+#    Updated: 2025/12/18 11:30:58 by afretta-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,4 +18,3 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = libft
 LIBFT     = $(LIBFT_DIR)/libft.a
 
-INCLUDES  = -Iincludes -I$(LIBFT_DIR)/includes
