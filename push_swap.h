@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/18 12:16:34 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:10:12 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "./libft/libft.h"
 # include <limits.h>
 # include <unistd.h>
+#include <stdbool.h>
+
 
 typedef struct s_stack_node
 {
@@ -27,15 +29,17 @@ typedef struct s_stack_node
 
 
 /* Handle Errors */
+int	error_and_free(t_stack_node **stack);
+int	repeated(int nb, t_stack_node *stack);
 
 /* Stack Creation  && errors*/
-void	intitialize_stack_a(t_stack_node **a, char **argv);
-void	requisits_stack(char *array, t_stack_node **stack);
+int	intitialize_stack_a(t_stack_node **stack, char **argv);
+int	requisits_stack(char *array, t_stack_node **stack_ptr);
+int	append_to_stack(int nb, t_stack_node **stack);
 
 /*Utils*/
-long	ps_atol(const char *str);
-
-
+long	ps_atol(const char *str, unsigned int *error);
+void	free_array(char **array);
 
 /* ALgorithm */
 

@@ -6,87 +6,92 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:07:39 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/18 12:26:42 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:10:34 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "./libft/libft.h"
 
-void	requisits_stack(char *array, t_stack_node **stack_ptr);
+int	requisits_stack(char *array, t_stack_node **stack_ptr);
+int	append_to_stack(int nb, t_stack_node **stack);
 
-void	intitialize_stack_a(t_stack_node **stack, char **argv)
+int	intitialize_stack_a(t_stack_node **stack, char **argv)
 {
-	int i;
-	int j;
-	char **array;
+	size_t	i;
+	size_t	j;
+	char	**array;
 
 	i = 0;
 	while (argv[i])
 	{
 		if (!argv[i][0])
-			error_and_free(stack);//TODO
+			return (error_and_free(stack));
 		array = ft_split(argv[i], ' ');
 		if (!array || !array[0])
-			error_and_free(stack);//TODO
+			return (free_array(array), error_and_free(stack));
 		j = 0;
 		while (array[j])
 		{
-			requisits_stack(array[j], stack);//TODO
-			j++;
+			if (requisits_stack(array[j++], stack) != 0)
+				return (free_array(array), 1);
 		}
-		free_array(array);//TODO
+		free_array(array);
 		i++;
 	}
+	return (0);
 }
 
-void	requisits_stack(char *array, t_stack_node **stack)
+int	requisits_stack(char *value, t_stack_node **stack)
 {
-	long	nb;
-	int		i;
+	long			nb;
+	size_t			i;
+	unsigned int	error;
 
 	i = 0;
-	if (array[0] == '+' || array[0] == '-')
+	if (value[0] == '+' || value[0] == '-')
 		i++;
-	while (array[i])
+	while (value[i])
 	{
-		if (!ft_isdigit(array[i]))
-			error_and_free(stack);// TODO
-		i++
+		if (!ft_isdigit(value[i]))
+			return (error_and_free(stack));
+		i++;
 	}
-	nb = ps_atol(array);
-	if (nb > INT_MAX || nb < INT_MIN)
-		error_and_free(stack); //TODO
-	if (!repeated(nb, stack))// TODO
-		append_to_stack(nb, stack); //TODO
-	else;
-		error_and_free(stack); //TODO
+	error = 0;
+	nb = ps_atol(value, &error);
+	if (nb > INT_MAX || nb < INT_MIN || error == 1)
+		return (error_and_free(stack));
+	if (!repeated(nb, *stack))
+	{
+		if (append_to_stack(nb, stack) != 0)
+			return (1);
+	}
+	else
+		return (error_and_free(stack));
+	return (0);
 }
 
-void	append_to_stack(int nb, t_stack_node **stack)
+int	append_to_stack(int nb, t_stack_node **stack)
 {
-	t_stack_node *new;
-	t_stack_node *last;
+	t_stack_node	*new;
+	t_stack_node	*last;
 
 	new = malloc(sizeof(t_stack_node));
 	if (!new)
-		error_and_free(stack);
-
+		return (error_and_free(stack));
 	new->value = nb;
 	new->index = -1;
 	new->next = NULL;
 	new->prev = NULL;
-
 	if (!*stack)
 	{
 		*stack = new;
-		return;
+		return (0);
 	}
-
 	last = *stack;
 	while (last->next)
 		last = last->next;
-
 	last->next = new;
 	new->prev = last;
+	return (0);
 }

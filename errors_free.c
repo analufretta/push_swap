@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   errors_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:10:38 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/17 16:33:14 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:02:52 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-errro_and_free(stack); //TODO
-free_array(array); //TODO;
+int	error_and_free(t_stack_node **stack)
+{
+	t_stack_node *tmp;
+
+	if (!stack || !*stack)
+		return (1);
+
+	while (*stack)
+    {
+		tmp = (*stack)->next; 
+		free(*stack);
+		*stack = tmp;
+    }
+	*stack = NULL;
+	return (1);
+}
+
+int	repeated(int nb, t_stack_node *stack)
+{
+	while(stack)
+	{
+		if (nb == stack->value)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}

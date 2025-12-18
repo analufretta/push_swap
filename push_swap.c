@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/18 12:25:57 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:14:15 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,19 @@ int	main(int argc, char *argv[])
 		split = ft_split(argv[1], ' ');
 		if (!split)
 			return (1);
-		intitialize_stack_a(&a, split);
-		free_array(split); // TODO;
+		if (intitialize_stack_a(&a, split) != 0)
+			return (free_array(split), write(1, "Error\n", 6));
+		free_array(split);
 	}
 	else if (argc > 2)
-		intitialize_stack_a(&a, argv + 1);
+	{	if (intitialize_stack_a(&a, argv + 1) != 0)
+			return (write(1, "Error\n", 6));
+	}
+	while (a)
+	{
+		printf("%d\n", a->value);
+		a = a->next;
+	}
 	// if (!sorted_stack(a))
 	// {
 	// 	//TODO ALGORITHM: this is where stack b enters
