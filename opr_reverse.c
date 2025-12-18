@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   opr_push.c                                         :+:      :+:    :+:   */
+/*   opr_reverse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/18 18:34:02 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/18 18:38:32 by afretta-         ###   ########.fr       */
+/*   Created: 2025/12/18 18:33:57 by afretta-          #+#    #+#             */
+/*   Updated: 2025/12/18 18:43:05 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	push_a()
+int	reverse_rotate()
 {
-	if (!b)
-		do nothing
-		return (0);
-	else
-		take top b and put it ar top a
-	return(write(1, "pa\n", 3));
+	last stack = top
+	bottom -1->next = NULL;
 }
 
-int	push_b()
+int	rotate_a()
 {
-	if (!a)
-		do nothing
-		return (0);
-	else
-		take top a and put it ar top b
-	return(write(1, "pb\n", 3));
+	reverse_rotate(a);
+	return(write(1, "rra\n", 4));
+}
+
+int	rotate_b()
+{
+	reverse_rotate(b);
+	return(write(1, "rrb\n", 4));
+}
+
+int	rotate_rr()
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	return(write(1, "r4r\n", 4));
 }
