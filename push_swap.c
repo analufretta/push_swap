@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/18 17:14:15 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/22 15:28:35 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 {
 	char **split;
 	t_stack_node *a;
-	// // t_stack_node *b;
+	// t_stack_node *b;
 	a = NULL;
 	// b = NULL;
 

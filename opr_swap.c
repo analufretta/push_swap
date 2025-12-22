@@ -3,40 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   opr_swap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 18:26:53 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/18 18:37:09 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/22 16:10:24 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	swap_elements()
+void	swap_elements(t_stack_node **stack)//WRONG! THINK ABOUT PREVIOUS NODES
 {
-	if (one element)
-		do nothing
-		return(0)
+	t_stack_node *first;
+	t_stack_node *second;
+
+	if (!stack || !(*stack) || !(*stack)->next)
+		return ;
 	else
-		swap
-		
+		first = (*stack)->next;
+		second = *stack;
+		*stack = first;
+		(*stack)->next = second;
+
+
 }
 
-int	swap_a()
+int	swap_a(t_stack_node **stack_a)
 {
-	swap_elements(a);
+	swap_elements(stack_a);
 	return(write(1, "sa\n", 3));
 }
 
-int	swap_b()
+int	swap_b(t_stack_node **stack_b)
 {
-	swap_elements(b);
+	swap_elements(stack_b);
 	return(write(1, "sb\n", 3));
 }
 
-int	swap_ss()
+int	swap_ss(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-	swap_elements(a);
-	swap_elements(b);
+	swap_elements(stack_a);
+	swap_elements(stack_b);
 	return(write(1, "sb\n", 3));
 }

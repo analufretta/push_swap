@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:45:46 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/18 17:10:05 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/22 15:51:27 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,4 @@ void	free_array(char **array)
 		free(array[i++]);
 	free(array);
 }
+
