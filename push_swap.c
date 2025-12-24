@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/23 17:27:34 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/24 11:34:53 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	main(int argc, char *argv[])
 {
 	char **split;
 	t_stack_node *a;
-	// t_stack_node *b;
+	t_stack_node *b;
 	a = NULL;
-	// b = NULL;
+	b = NULL;
 
 	if (argc == 1)
 		return (1);
@@ -45,6 +45,7 @@ int	main(int argc, char *argv[])
 		printf("%d\n", a->value);
 		a = a->next;
 	}
+	
 	// if (!sorted_stack(a))
 	// {
 	// 	//TODO ALGORITHM: this is where stack b enters

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 09:58:24 by afretta-          #+#    #+#             */
-/*   Updated: 2025/10/28 18:03:25 by afretta-         ###   ########.fr       */
+/*   Created: 2025/12/23 14:04:27 by afretta-          #+#    #+#             */
+/*   Updated: 2025/12/23 16:46:27 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "libft_bonus.h"
+#include <stdio.h>
 
-char	*ft_strchr(const char *s, int c)
+t_list	*ft_lstnew(void *content)
 {
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		else
-			s++;
-	}
-	if (*s == (char)c)
-		return ((char *)s);
-	return (NULL);
+	t_list	*new_element;
+
+	new_element = (void *)malloc(sizeof(t_list));
+	if (!new_element)
+		return (NULL);
+	new_element->content = content;
+	new_element->next = NULL;
+	return (new_element);
 }

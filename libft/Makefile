@@ -6,14 +6,14 @@
 #    By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/17 11:49:44 by afretta-          #+#    #+#              #
-#    Updated: 2025/10/21 16:53:35 by afretta-         ###   ########.fr        #
+#    Updated: 2025/12/23 16:16:19 by afretta-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I.
 
 SRC = 	ft_isalpha.c \
 		ft_isdigit.c \
@@ -50,7 +50,19 @@ SRC = 	ft_isalpha.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c
 
+BONUS = ft_lstnew_bonus.c \
+		ft_lstadd_front_bonus.c \
+		ft_lstsize_bonus.c \
+		ft_lstlast_bonus.c \
+		ft_lstadd_back_bonus.c \
+		ft_lstdelone_bonus.c \
+		ft_lstclear_bonus.c \
+		ft_lstiter_bonus.c \
+		ft_lstmap_bonus.c
+
 OBJ = $(SRC:.c=.o)
+
+OBJ_BONUS = $(BONUS:.c=.o)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -60,10 +72,15 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
+bonus: $(OBJ) $(OBJ_BONUS)
+	ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

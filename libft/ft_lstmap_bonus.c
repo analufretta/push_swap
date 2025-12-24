@@ -1,46 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 11:45:26 by afretta-          #+#    #+#             */
-/*   Updated: 2025/10/17 11:57:59 by afretta-         ###   ########.fr       */
+/*   Created: 2025/12/23 16:16:54 by afretta-          #+#    #+#             */
+/*   Updated: 2025/12/23 16:52:58 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "libft_bonus.h"
 
-static int	is_space(char c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	return (c == 32 || (c >= 9 && c <= 13));
-}
+	t_list	*new_lst;
+	t_list	*new_node;
 
-int	ft_atoi(const char *str)
-{
-	int	nb;
-	int	i;
-	int	sign;
-
-	nb = 0;
-	i = 0;
-	sign = 1;
-	while (is_space(str[i]))
-		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
+	new_lst = NULL;
+	if (!lst || !f || !del)
+		return (NULL);
+	while (lst)
 	{
-		sign = -sign;
-		i++;
+		new_node = ft_lstnew((*f)(lst->content));
+		if (!new_node)
+			return (ft_lstclear(&new_lst, del), NULL);
+		ft_lstadd_back(&new_lst, new_node);
 	}
-	else if (ft_isdigit(str[i]) == 0)
-		return (nb);
-	while (ft_isdigit(str[i]) != 0)
-	{
-		nb = (nb * 10) + (str[i] - 48);
-		i++;
-	}
-	return (nb * sign);
+	lst = lst->next;
+	return (new_lst);
 }

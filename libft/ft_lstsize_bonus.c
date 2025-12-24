@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   typedef.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 10:08:15 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/17 10:14:19 by afretta-         ###   ########.fr       */
+/*   Created: 2025/12/23 15:32:29 by afretta-          #+#    #+#             */
+/*   Updated: 2025/12/23 16:56:04 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
+#include "libft_bonus.h"
 
-typedef unsigned long long UNIT64;
-typedef struct Point
+int	ft_lstsize(t_list *lst)
 {
-	double x, y;
-} Point;
+	size_t	size;
 
-int	main(void)
-{
-	UNIT64 example = 14;
-	Point p;
-	p.x = 0.24;
-	p.y = 0.28;
-
-	printf("%llu\n", example);
-	printf("%f\n%f\n", p.x, p.y);
-	return (0);
+	size = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
 }
