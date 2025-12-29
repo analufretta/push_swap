@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/18 17:10:12 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/29 16:47:43 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_stack_node
 	int					index;
 	struct s_stack_node *next;
 	struct s_stack_node *prev;
+	struct s_stack_node *top;
+	struct s_stack_node *bottom;
 }	t_stack_node;
 
 
@@ -42,37 +44,24 @@ long	ps_atol(const char *str, unsigned int *error);
 void	free_array(char **array);
 
 /* ALgorithm */
+int	push_swap(t_stack_node **a, t_stack_node **b);
 
 /* Linked List utils */
 
-/* Commands */
-// sa(swap a)
-// Swap the first 2 elements at the top of stack a.
-// Do nothing if there is only one element or none.
-// sb(swap b)
-// Swap the first 2 elements at the top of stack b.
-// Do nothing if there is only one element or none.
-// ss(sa and sb at the same time)
-// pa(push a)
-// Take the first element at the top of b and put it at the top of a.
-// Do nothing if b is empty.
-// pb(push b)
-// Take the first element at the top of a and put it at the top of b.
-// Do nothing if a is empty.
-// ra(rotate a)
-// Shift up all elements of stack a by 1.
-// The first element becomes the last one.
-// rb(rotate b)
-// Shift up all elements of stack b by 1.
-// The first element becomes the last one.
-// rr(ra and rb at the same time)
-// rra(reverse rotate a)
-// Shift down all elements of stack a by 1.
-// The last element becomes the first one.
-// rrb(reverse rotate b)
-// Shift down all elements of stack b by 1.
-// The last element becomes the first one.
-// rrr()
-//rra and rrb at the same time.
+/* Operations */
+void	swap_elements(t_stack_node **stack);
+void	swap_a(t_stack_node **stack_a);
+void	swap_b(t_stack_node **stack_b);
+void	swap_ss(t_stack_node **stack_a, t_stack_node **stack_b);
+void	push_a(t_stack_node **a, t_stack_node **b);
+void	push_b(t_stack_node **a, t_stack_node **b);
+void	rotate(t_stack_node **stack);
+void	rotate_a(t_stack_node **a);
+void	rotate_b(t_stack_node **b);
+void	rotate_both(t_stack_node **a, t_stack_node **b);
+void	rev_rotate(t_stack_node **stack);
+void	rev_rotate_a(t_stack_node **a);
+void	rev_rotate_b(t_stack_node **b);
+void	rev_rotate_both(t_stack_node **a, t_stack_node **b);
 
 #endif

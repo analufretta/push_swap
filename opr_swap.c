@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 18:26:53 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/23 17:36:50 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/29 16:30:17 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ void	swap_ss(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	swap_elements(stack_a);
 	swap_elements(stack_b);
-	write(1, "sb\n", 3);
+	write(1, "ss\n", 3);
 }

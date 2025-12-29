@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/24 11:34:53 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/29 16:42:32 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,24 @@ int	main(int argc, char *argv[])
 	{	if (intitialize_stack_a(&a, argv + 1) != 0)
 			return (write(1, "Error\n", 6));
 	}
-	while (a)
+	return (push_swap(&a, &b));
+}
+int	push_swap(t_stack_node **a, t_stack_node **b) //todo
+{
+	swap_a(a);
+	push_b(a, b);
+	push_b(a, b);
+	// rotate_a(&a);
+	// rotate_b(&b);
+	while(*a)
 	{
-		printf("%d\n", a->value);
-		a = a->next;
+		printf("a: %d\n", (*a)->value);
+		*a = (*a)->next;
 	}
-	
-	// if (!sorted_stack(a))
-	// {
-	// 	//TODO ALGORITHM: this is where stack b enters
-	// }
-	// free_stack(&a);
-	// return (0);
+	while(*b)
+	{
+		printf("b: %d\n", (*b)->value);
+		*b = (*b)->next;
+	}
+	return (0);
 }
