@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/29 16:47:43 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/30 15:34:47 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	append_to_stack(int nb, t_stack_node **stack);
 /*Utils*/
 long	ps_atol(const char *str, unsigned int *error);
 void	free_array(char **array);
+t_stack_node *find_last_node(t_stack_node *stack);
 
 /* ALgorithm */
 int	push_swap(t_stack_node **a, t_stack_node **b);

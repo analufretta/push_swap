@@ -6,12 +6,11 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 18:33:57 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/24 17:05:00 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/30 15:37:06 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft_bonus.h"
 
 void	rev_rotate(t_stack_node **stack)
 {
@@ -20,7 +19,7 @@ void	rev_rotate(t_stack_node **stack)
 
 	if (!stack || !(*stack) || !(*stack)->next)
 		return ;
-	last = ft_lstlast(*stack); // optmize later
+	last = find_last_node(*stack);
 	bf_last = last->prev;
 	last->prev = NULL;
 	bf_last->next = NULL;

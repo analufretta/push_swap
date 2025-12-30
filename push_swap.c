@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/29 16:42:32 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/30 15:37:40 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	push_swap(t_stack_node **a, t_stack_node **b) //todo
 	swap_a(a);
 	push_b(a, b);
 	push_b(a, b);
-	// rotate_a(&a);
-	// rotate_b(&b);
+	rotate_a(a);
+	rotate_b(b);
 	while(*a)
 	{
 		printf("a: %d\n", (*a)->value);

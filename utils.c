@@ -6,12 +6,13 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:45:46 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/22 15:51:27 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/30 15:36:49 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "./libft/libft.h"
+#include <stdio.h>
 
 long	ps_atol(const char *str, unsigned int *error)
 {
@@ -53,3 +54,13 @@ void	free_array(char **array)
 	free(array);
 }
 
+t_stack_node *find_last_node(t_stack_node *stack)
+{
+	if (!stack)
+		return (NULL);
+	while(stack->next)
+	{
+		stack = stack->next;
+	}
+	return(stack);
+}
