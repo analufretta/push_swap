@@ -1,3 +1,5 @@
 a.out
 *.o
 libft/libft.a
+.DS.Store
+.vscode/
