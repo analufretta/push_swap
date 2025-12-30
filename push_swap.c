@@ -6,13 +6,12 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/30 15:37:40 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/30 16:44:25 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "./libft/libft.h"
-#include <unistd.h>
 #include <stdio.h>
 
 int	main(int argc, char *argv[])
@@ -42,22 +41,14 @@ int	main(int argc, char *argv[])
 	}
 	return (push_swap(&a, &b));
 }
-int	push_swap(t_stack_node **a, t_stack_node **b) //todo
+int	push_swap(t_stack_node **a, t_stack_node **b)
 {
-	swap_a(a);
-	push_b(a, b);
-	push_b(a, b);
-	rotate_a(a);
-	rotate_b(b);
-	while(*a)
-	{
-		printf("a: %d\n", (*a)->value);
-		*a = (*a)->next;
-	}
-	while(*b)
-	{
-		printf("b: %d\n", (*b)->value);
-		*b = (*b)->next;
-	}
-	return (0);
+	if (is_sorted(a) == 0)
+		return (0);
+	else if (stack_len(*a) == 2)
+		return (swap_a(a), 0);
+	else if (stack_len(*a) == 3)
+		return (tiny_sort(a), 0); //todo
+	else
+		return (sort_stack(a, b), 0); //todo:algorithm
 }
