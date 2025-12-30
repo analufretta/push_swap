@@ -1,5 +1,4 @@
-./a.out
-./push_swap
+a.out
 *.o
 libft/libft.a
 .vscode
