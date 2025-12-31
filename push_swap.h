@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/30 16:36:38 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/31 15:02:00 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,12 @@ void					free_array(char **array);
 t_stack_node			*find_last_node(t_stack_node *stack);
 size_t					stack_len(t_stack_node *stack);
 
+/*Sorting Utils*/
+t_stack_node *find_highest(t_stack_node *stack);
+
 /* Srting ALgorithm */
-int						push_swap(t_stack_node **a, t_stack_node **b);
-int						is_sorted(t_stack_node **a);
+void					tiny_sort(t_stack_node **a);
+int						is_sorted(t_stack_node *a);
 
 /* Operations */
 void					swap_elements(t_stack_node **stack);

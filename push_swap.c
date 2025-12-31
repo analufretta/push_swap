@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/30 16:44:25 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/31 11:42:28 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 #include "./libft/libft.h"
 #include <stdio.h>
 
+static int	push_swap(t_stack_node **a);
+
 int	main(int argc, char *argv[])
 {
 	char **split;
 	t_stack_node *a;
-	t_stack_node *b;
+	// t_stack_node *b;
 	a = NULL;
-	b = NULL;
+	// b = NULL;
 
 	if (argc == 1)
 		return (1);
@@ -39,16 +41,22 @@ int	main(int argc, char *argv[])
 	{	if (intitialize_stack_a(&a, argv + 1) != 0)
 			return (write(1, "Error\n", 6));
 	}
-	return (push_swap(&a, &b));
+	return (push_swap(&a));
 }
-int	push_swap(t_stack_node **a, t_stack_node **b)
+static int	push_swap(t_stack_node **a)
 {
-	if (is_sorted(a) == 0)
+	if (is_sorted(*a) == 0)
 		return (0);
 	else if (stack_len(*a) == 2)
-		return (swap_a(a), 0);
+		swap_a(a);
 	else if (stack_len(*a) == 3)
-		return (tiny_sort(a), 0); //todo
-	else
-		return (sort_stack(a, b), 0); //todo:algorithm
+		tiny_sort(a);
+	while(*a)
+	{
+		printf("a: %d\n", (*a)->value);
+		(*a) = (*a)->next;
+	}
+	// else if
+	// 	return (sort_stack(a, b), 0); //todo:algorithm
+	return (0);
 }

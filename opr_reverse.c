@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 18:33:57 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/30 15:37:06 by afretta-         ###   ########.fr       */
+/*   Updated: 2025/12/31 14:59:57 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ void	rev_rotate(t_stack_node **stack)
 
 void	rev_rotate_a(t_stack_node **a)
 {
-	rotate(a);
+	rev_rotate(a);
 	write(1, "rra\n", 4);
 }
 
 void	rev_rotate_b(t_stack_node **b)
 {
-	rotate(b);
+	rev_rotate(b);
 	write(1, "rrb\n", 4);
 }
 
 void	rev_rotate_both(t_stack_node **a, t_stack_node **b)
 {
-	rotate(a);
-	rotate(b);
+	rev_rotate(a);
+	rev_rotate(b);
 	write(1, "rrr\n", 4);
 }
