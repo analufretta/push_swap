@@ -14,16 +14,15 @@
 
 void	swap_elements(t_stack_node **stack)
 {
-	t_stack_node *first;
-	t_stack_node *second;
+	t_stack_node	*first;
+	t_stack_node	*second;
 
 	if (!stack || !(*stack) || !(*stack)->next)
 		return ;
-
 	first = (*stack);
 	second = first->next;
 	first->next = second->next;
-	if(second->next)
+	if (second->next)
 		second->next->prev = first;
 	second->prev = NULL;
 	second->next = first;

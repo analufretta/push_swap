@@ -6,12 +6,12 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:07:39 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/30 16:39:17 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/02 17:53:00 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "./libft/libft.h"
+#include "push_swap.h"
 
 int	intitialize_stack_a(t_stack_node **stack, char **argv)
 {
@@ -23,14 +23,14 @@ int	intitialize_stack_a(t_stack_node **stack, char **argv)
 	while (argv[i])
 	{
 		if (!argv[i][0])
-			return (error_and_free(stack));
+			return (error_and_free(stack), 1);
 		array = ft_split(argv[i], ' ');
 		if (!array || !array[0])
-			return (free_array(array), error_and_free(stack));
+			return (free_array(array), error_and_free(stack), 1);
 		j = 0;
 		while (array[j])
 		{
-			if (requisits_stack(array[j++], stack) != 0)
+			if (!requisits_stack(array[j++], stack))
 				return (free_array(array), 1);
 		}
 		free_array(array);
@@ -39,7 +39,7 @@ int	intitialize_stack_a(t_stack_node **stack, char **argv)
 	return (0);
 }
 
-int	requisits_stack(char *value, t_stack_node **stack)
+bool	requisits_stack(char *value, t_stack_node **stack)
 {
 	long			nb;
 	size_t			i;
@@ -51,21 +51,21 @@ int	requisits_stack(char *value, t_stack_node **stack)
 	while (value[i])
 	{
 		if (!ft_isdigit(value[i]))
-			return (error_and_free(stack));
+			return (error_and_free(stack), false);
 		i++;
 	}
 	error = 0;
 	nb = ps_atol(value, &error);
 	if (nb > INT_MAX || nb < INT_MIN || error == 1)
-		return (error_and_free(stack));
-	if (!repeated(nb, *stack))
+		return (error_and_free(stack), false);
+	if (!is_repeated(nb, *stack))
 	{
 		if (append_to_stack(nb, stack) != 0)
-			return (1);
+			return (false);
 	}
 	else
-		return (error_and_free(stack));
-	return (0);
+		return (error_and_free(stack), false);
+	return (true);
 }
 
 int	append_to_stack(int nb, t_stack_node **stack)
@@ -75,9 +75,11 @@ int	append_to_stack(int nb, t_stack_node **stack)
 
 	new = malloc(sizeof(t_stack_node));
 	if (!new)
-		return (error_and_free(stack));
+		return (error_and_free(stack), 1);
 	new->value = nb;
 	new->index = -1;
+	new->cost = 0;
+	new->target_node = NULL;
 	new->next = NULL;
 	new->prev = NULL;
 	if (!*stack)

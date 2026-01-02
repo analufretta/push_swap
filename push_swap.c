@@ -6,24 +6,24 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/31 11:42:28 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/02 11:55:14 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "./libft/libft.h"
+#include "push_swap.h"
 #include <stdio.h>
 
-static int	push_swap(t_stack_node **a);
+static int	push_swap(t_stack_node **a, t_stack_node **b);
 
 int	main(int argc, char *argv[])
 {
-	char **split;
-	t_stack_node *a;
-	// t_stack_node *b;
-	a = NULL;
-	// b = NULL;
+	char			**split;
+	t_stack_node	*a;
+	t_stack_node	*b;
 
+	a = NULL;
+	b = NULL;
 	if (argc == 1)
 		return (1);
 	else if (argc == 2 && !argv[1][0])
@@ -38,25 +38,33 @@ int	main(int argc, char *argv[])
 		free_array(split);
 	}
 	else if (argc > 2)
-	{	if (intitialize_stack_a(&a, argv + 1) != 0)
+	{
+		if (intitialize_stack_a(&a, argv + 1) != 0)
 			return (write(1, "Error\n", 6));
 	}
-	return (push_swap(&a));
+	return (push_swap(&a, &b));
 }
-static int	push_swap(t_stack_node **a)
+
+static int	push_swap(t_stack_node **a, t_stack_node **b)
 {
-	if (is_sorted(*a) == 0)
+	if (is_sorted(*a))
 		return (0);
 	else if (stack_len(*a) == 2)
 		swap_a(a);
 	else if (stack_len(*a) == 3)
 		tiny_sort(a);
-	while(*a)
-	{
-		printf("a: %d\n", (*a)->value);
-		(*a) = (*a)->next;
-	}
-	// else if
-	// 	return (sort_stack(a, b), 0); //todo:algorithm
+	else
+		sort_stack(a, b);
 	return (0);
 }
+
+// while (*a)
+// {
+// 	printf("a: %d\n", (*a)->value);
+// 	(*a) = (*a)->next;
+// }
+// while (*b)
+// {
+// 	printf("b: %d\n", (*b)->value);
+// 	(*b) = (*b)->next;
+// }

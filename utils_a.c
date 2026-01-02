@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_a.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:45:46 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/31 10:46:32 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/02 12:36:03 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "./libft/libft.h"
+#include "push_swap.h"
 #include <stdio.h>
 
 long	ps_atol(const char *str, unsigned int *error)
@@ -42,25 +42,38 @@ long	ps_atol(const char *str, unsigned int *error)
 	return (nb * sign);
 }
 
-void	free_array(char **array)
+bool	is_repeated(int nb, t_stack_node *stack)
 {
-	size_t	i;
-
-	i = 0;
-	if (!array)
-		return ;
-	while (array[i])
-		free(array[i++]);
-	free(array);
+	while (stack)
+	{
+		if (nb == stack->value)
+			return (true);
+		stack = stack->next;
+	}
+	return (false);
 }
 
-t_stack_node *find_last_node(t_stack_node *stack)
+bool	is_sorted(t_stack_node *stack)
+{
+	if (!stack)
+		return (0);
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (false);
+		else
+			stack = stack->next;
+	}
+	return (true);
+}
+
+t_stack_node	*find_last_node(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
-	while(stack->next)
+	while (stack->next)
 		stack = stack->next;
-	return(stack);
+	return (stack);
 }
 
 size_t	stack_len(t_stack_node *stack)
@@ -70,23 +83,12 @@ size_t	stack_len(t_stack_node *stack)
 	len = 0;
 	if (!stack)
 		return (0);
-	while(stack)
+	while (stack)
 	{
 		stack = stack->next;
 		len++;
 	}
-	return(len);
+	return (len);
 }
-int	is_sorted(t_stack_node *stack)
-{
-	if (!stack)
-		return (0);
-	while(stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (1);
-		else
-		stack = stack->next;
-	}
-	return (0);
-}
+
+

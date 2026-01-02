@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2025/12/31 15:02:00 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:16:21 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,37 @@ typedef struct s_stack_node
 {
 	int					value;
 	int					index;
+	int					cost;
+	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
-	struct s_stack_node	*top;
-	struct s_stack_node	*bottom;
+
 }						t_stack_node;
 
 /* Handle Errors */
-int						error_and_free(t_stack_node **stack);
-int						repeated(int nb, t_stack_node *stack);
+void					error_and_free(t_stack_node **stack);
+void					free_array(char **array);
 
 /* Stack Creation  && errors*/
 int						intitialize_stack_a(t_stack_node **stack, char **argv);
-int						requisits_stack(char *array, t_stack_node **stack_ptr);
+bool					requisits_stack(char *array, t_stack_node **stack_ptr);
 int						append_to_stack(int nb, t_stack_node **stack);
 
 /*Utils*/
 long					ps_atol(const char *str, unsigned int *error);
-void					free_array(char **array);
+bool					is_repeated(int nb, t_stack_node *stack);
 t_stack_node			*find_last_node(t_stack_node *stack);
 size_t					stack_len(t_stack_node *stack);
-
-/*Sorting Utils*/
-t_stack_node *find_highest(t_stack_node *stack);
+t_stack_node			*find_highest(t_stack_node *stack);
+t_stack_node			*find_lowest(t_stack_node *stack);
+void					set_current_position(t_stack_node *stack);
+void					set_target_node(t_stack_node *a, t_stack_node *b);
+void					set_cost_move(t_stack_node*a, t_stack_node *b);
 
 /* Srting ALgorithm */
 void					tiny_sort(t_stack_node **a);
-int						is_sorted(t_stack_node *a);
+bool					is_sorted(t_stack_node *a);
+void					sort_stack(t_stack_node **a, t_stack_node **b);
 
 /* Operations */
 void					swap_elements(t_stack_node **stack);
