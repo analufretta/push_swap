@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <push_swap.h>
-#include<stdio.h>
+#include <stdio.h>
 
 static void	init_nodes(t_stack_node *a, t_stack_node *b);
 // static void	move_nodes(t_stack_node **a, t_stack_node **b);
@@ -45,7 +45,7 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 	while (*b)
 	{
 		init_nodes(*a, *b); // todo
-		move_nodes(a, b); // todo
+		move_nodes(a, b);   // todo
 	}
 	set_current_position(a);
 	// final_sort(a); //todo: rot or rev_rot until smallest node is at the top
@@ -56,8 +56,8 @@ static void	init_nodes(t_stack_node *a, t_stack_node *b)
 	set_current_position(a);
 	set_current_position(b);
 	set_target_node(a, b);
-	set_cost_move(a, b); //todo
-	//set cheapest
+	set_cost_move(a, b); // todo
+	// set cheapest
 }
 
 // static void	move_nodes(t_stack_node **a, t_stack_node **b) // todo

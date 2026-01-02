@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:31:37 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/02 18:15:59 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:26:08 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ t_stack_node	*find_lowest(t_stack_node *stack)
 
 void	set_current_position(t_stack_node *stack)
 {
-	size_t index;
+	size_t	index;
 
 	index = 1;
-	if(!stack)
+	if (!stack)
 		return ;
 	while (stack)
 	{
 		stack->index = stack->index + index;
-		index ++;
+		index++;
 		stack = stack->next;
 	}
 }
@@ -82,8 +82,8 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 		target_node = NULL;
 		while (current_a)
 		{
-			if (current_a->value > b->value &&
-				current_a->value < smallest_biggest)
+			if (current_a->value > b->value
+				&& current_a->value < smallest_biggest)
 			{
 				smallest_biggest = current_a->value;
 				target_node = current_a;
@@ -98,4 +98,4 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void set_cost_move(t_stack_node*a, t_stack_node *b) // todo
+void	set_cost_move(t_stack_node *a, t_stack_node *b); // todo

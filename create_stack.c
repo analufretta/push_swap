@@ -6,12 +6,15 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:07:39 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/02 17:53:00 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:29:57 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "push_swap.h"
+
+static bool	requisits_stack(char *value, t_stack_node **stack);
+static int	append_to_stack(int nb, t_stack_node **stack);
 
 int	intitialize_stack_a(t_stack_node **stack, char **argv)
 {
@@ -39,7 +42,7 @@ int	intitialize_stack_a(t_stack_node **stack, char **argv)
 	return (0);
 }
 
-bool	requisits_stack(char *value, t_stack_node **stack)
+static bool	requisits_stack(char *value, t_stack_node **stack)
 {
 	long			nb;
 	size_t			i;
@@ -68,7 +71,7 @@ bool	requisits_stack(char *value, t_stack_node **stack)
 	return (true);
 }
 
-int	append_to_stack(int nb, t_stack_node **stack)
+static int	append_to_stack(int nb, t_stack_node **stack)
 {
 	t_stack_node	*new;
 	t_stack_node	*last;

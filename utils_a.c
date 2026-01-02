@@ -90,5 +90,3 @@ size_t	stack_len(t_stack_node *stack)
 	}
 	return (len);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/02 11:55:14 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:25:45 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,3 @@ static int	push_swap(t_stack_node **a, t_stack_node **b)
 		sort_stack(a, b);
 	return (0);
 }
-
-// while (*a)
-// {
-// 	printf("a: %d\n", (*a)->value);
-// 	(*a) = (*a)->next;
-// }
-// while (*b)
-// {
-// 	printf("b: %d\n", (*b)->value);
-// 	(*b) = (*b)->next;
-// }
