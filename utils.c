@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_a.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:45:46 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/02 12:36:03 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/05 14:35:55 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,6 @@ bool	is_sorted(t_stack_node *stack)
 			stack = stack->next;
 	}
 	return (true);
-}
-
-t_stack_node	*find_last_node(t_stack_node *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack->next)
-		stack = stack->next;
-	return (stack);
 }
 
 size_t	stack_len(t_stack_node *stack)

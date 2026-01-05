@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:07:39 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/02 18:29:57 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/05 10:16:08 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static int	append_to_stack(int nb, t_stack_node **stack)
 	new->index = -1;
 	new->cost = 0;
 	new->target_node = NULL;
+	new->cheapest = false;
 	new->next = NULL;
 	new->prev = NULL;
 	if (!*stack)

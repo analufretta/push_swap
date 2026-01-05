@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/02 18:29:35 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/05 16:01:14 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack_node
 	int					value;
 	int					index;
 	int					cost;
+	bool				cheapest;
 	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
@@ -38,17 +39,31 @@ int						intitialize_stack_a(t_stack_node **stack, char **argv);
 long					ps_atol(const char *str, unsigned int *error);
 bool					is_repeated(int nb, t_stack_node *stack);
 bool					is_sorted(t_stack_node *a);
-t_stack_node			*find_last_node(t_stack_node *stack);
 size_t					stack_len(t_stack_node *stack);
+
+/*Find in Stack*/
+t_stack_node			*find_last_node(t_stack_node *stack);
 t_stack_node			*find_highest(t_stack_node *stack);
 t_stack_node			*find_lowest(t_stack_node *stack);
+t_stack_node			*find_cheapest(t_stack_node *stack);
+
+/*Set in Stack*/
 void					set_current_position(t_stack_node *stack);
 void					set_target_node(t_stack_node *a, t_stack_node *b);
 void					set_cost_move(t_stack_node *a, t_stack_node *b);
+void					set_cheapest_move(t_stack_node *b);
 
-/* Srting ALgorithm */
+/* Sorting ALgorithm */
 void					tiny_sort(t_stack_node **a);
 void					sort_stack(t_stack_node **a, t_stack_node **b);
+
+/*Algorithm rotations*/
+void					special_rotate(t_stack_node **a, t_stack_node **b,
+							t_stack_node *cheapest_node);
+void					special_rev_rotate(t_stack_node **a, t_stack_node **b,
+							t_stack_node *cheapest_node);
+void					final_rotations(t_stack_node **stack,
+							t_stack_node *cheapest_move, char stack_name);
 
 /* Operations */
 void					swap_elements(t_stack_node **stack);
