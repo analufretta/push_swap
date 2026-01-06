@@ -6,11 +6,11 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:07:39 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/05 10:16:08 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:43:39 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
+#include "libft.h"
 #include "push_swap.h"
 
 static bool	requisits_stack(char *value, t_stack_node **stack);

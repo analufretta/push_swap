@@ -6,14 +6,14 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/05 16:01:14 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:47:24 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "./libft/libft.h"
+# include "libft.h"
 # include <limits.h>
 # include <stdbool.h>
 # include <unistd.h>
@@ -82,3 +82,4 @@ void					rev_rotate_b(t_stack_node **b);
 void					rev_rotate_both(t_stack_node **a, t_stack_node **b);
 
 #endif
+

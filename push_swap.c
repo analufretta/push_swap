@@ -6,13 +6,11 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/02 18:25:45 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:48:58 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	push_swap(t_stack_node **a, t_stack_node **b);
 

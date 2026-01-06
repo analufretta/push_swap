@@ -6,12 +6,11 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:53:29 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/05 16:04:58 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:43:24 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-#include <stdio.h>
 
 static void	init_nodes(t_stack_node *a, t_stack_node *b);
 static void	move_nodes(t_stack_node **a, t_stack_node **b);
@@ -47,7 +46,7 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 		init_nodes(*a, *b);
 		move_nodes(a, b);
 	}
-	set_current_position(a);
+	set_current_position(*a);
 	final_sort(a);
 }
 
@@ -80,7 +79,7 @@ static void	final_sort(t_stack_node **a)
 {
 	t_stack_node	*smallest_value;
 	size_t			len;
-	size_t			medium;
+	int				medium;
 
 	smallest_value = find_lowest(*a);
 	len = stack_len(*a);

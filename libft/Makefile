@@ -6,15 +6,22 @@
 #    By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/17 11:49:44 by afretta-          #+#    #+#              #
-#    Updated: 2025/12/23 16:16:19 by afretta-         ###   ########.fr        #
+#    Updated: 2026/01/06 12:39:23 by afretta-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+# ================= COLORS ================= #
+GREEN = \033[0;32m
+RED   = \033[0;31m
+RESET = \033[0m
+
+# ================= PROJECT ================= #
+NAME = 	libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror
 
+# ================= SOURCES ================= #
 SRC = 	ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isalnum.c \
@@ -50,36 +57,26 @@ SRC = 	ft_isalpha.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c
 
-BONUS = ft_lstnew_bonus.c \
-		ft_lstadd_front_bonus.c \
-		ft_lstsize_bonus.c \
-		ft_lstlast_bonus.c \
-		ft_lstadd_back_bonus.c \
-		ft_lstdelone_bonus.c \
-		ft_lstclear_bonus.c \
-		ft_lstiter_bonus.c \
-		ft_lstmap_bonus.c
-
 OBJ = $(SRC:.c=.o)
 
-OBJ_BONUS = $(BONUS:.c=.o)
-
+# ================= RULES ================= #
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
-
-bonus: $(OBJ) $(OBJ_BONUS)
-	ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
+	@ar rcs $(NAME) $(OBJ)
+	@echo "$(GREEN)libft built$(RESET)"
 
 clean:
-	rm -f $(OBJ) $(OBJ_BONUS)
+	@rm -f $(OBJ)
+	@echo "$(RED)libft objects removed$(RESET)"
+
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(RED)libft removed$(RESET)"
 
 re: fclean all
 

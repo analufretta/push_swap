@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/05 15:06:55 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:07:38 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	set_cost_move(t_stack_node *a, t_stack_node *b)
 {
 	size_t	len_a;
 	size_t	len_b;
-	size_t	medium_a;
-	size_t	medium_b;
+	int		medium_a;
+	int		medium_b;
 
 	len_a = stack_len(a);
 	len_b = stack_len(b);
