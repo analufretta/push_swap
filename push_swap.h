@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/06 12:47:24 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/07 18:39:05 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,32 @@ t_stack_node			*find_cheapest(t_stack_node *stack);
 
 /*Set in Stack*/
 void					set_current_position(t_stack_node *stack);
-void					set_target_node(t_stack_node *a, t_stack_node *b);
+void					set_target_node(t_stack_node *src, t_stack_node *dst,
+							char src_stack);
+void					set_b_target_node(t_stack_node *a, t_stack_node *b);
+void					set_a_target_node(t_stack_node *a, t_stack_node *b);
+
+/*Cost Caltulations*/
 void					set_cost_move(t_stack_node *a, t_stack_node *b);
 void					set_cheapest_move(t_stack_node *b);
 
 /* Sorting ALgorithm */
-void					tiny_sort(t_stack_node **a);
 void					sort_stack(t_stack_node **a, t_stack_node **b);
+
+/*Tiny sort*/
+void				tiny_sort(t_stack_node **a);
+void				sort_until_five(t_stack_node **a, t_stack_node **b);
 
 /*Algorithm rotations*/
 void					special_rotate(t_stack_node **a, t_stack_node **b,
 							t_stack_node *cheapest_node);
 void					special_rev_rotate(t_stack_node **a, t_stack_node **b,
 							t_stack_node *cheapest_node);
-void					final_rotations(t_stack_node **stack,
-							t_stack_node *cheapest_move, char stack_name);
+void					final_rotations(t_stack_node **stack, t_stack_node *expected);
+
+/*Final Sort*/
+void					final_sort_asc(t_stack_node **a);
+void					final_sort_desc(t_stack_node **b);
 
 /* Operations */
 void					swap_elements(t_stack_node **stack);
@@ -82,4 +93,3 @@ void					rev_rotate_b(t_stack_node **b);
 void					rev_rotate_both(t_stack_node **a, t_stack_node **b);
 
 #endif
-

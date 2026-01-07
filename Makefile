@@ -6,7 +6,7 @@
 #    By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/15 15:40:08 by afretta-          #+#    #+#              #
-#    Updated: 2026/01/06 12:52:47 by afretta-         ###   ########.fr        #
+#    Updated: 2026/01/07 17:17:46 by afretta-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,12 @@ SRCS = 	push_swap.c \
 		errors_free.c \
 		utils.c \
 		algorithm/algorithm_rotations.c \
+		algorithm/cost_calculations.c \
+		algorithm/final_sort.c \
 		algorithm/find_in_stack.c \
 		algorithm/set_in_stack.c \
 		algorithm/sort_algo.c \
+		algorithm/tiny_sort.c \
 		operations/push.c \
 		operations/reverse.c \
 		operations/rotate.c \

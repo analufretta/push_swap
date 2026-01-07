@@ -6,30 +6,29 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/06 12:07:38 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/07 18:19:24 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	calc_total_cost(int cost_b, int cost_a);
 
 void	set_current_position(t_stack_node *stack)
 {
 	size_t	index;
 
-	index = 1;
+	index = 0;
 	if (!stack)
 		return ;
 	while (stack)
 	{
-		stack->index = stack->index + index;
+		stack->index = index;
 		index++;
 		stack = stack->next;
 	}
 }
 
-void	set_target_node(t_stack_node *a, t_stack_node *b)
+void	set_b_target_node(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
 	t_stack_node	*target_node;
@@ -58,58 +57,31 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	set_cost_move(t_stack_node *a, t_stack_node *b)
+void	set_a_target_node(t_stack_node *a, t_stack_node *b)
 {
-	size_t	len_a;
-	size_t	len_b;
-	int		medium_a;
-	int		medium_b;
+	t_stack_node	*current_b;
+	t_stack_node	*target_node;
+	long			biggest_smallest;
 
-	len_a = stack_len(a);
-	len_b = stack_len(b);
-	medium_a = len_a / 2;
-	medium_b = len_b / 2;
-	while (b)
+	while (a)
 	{
-		if (b->index <= medium_b)
-			b->cost = b->index;
-		else
-			b->cost = b->index - (int)len_b;
-		if (b->target_node->index <= medium_a)
-			b->target_node->cost = b->target_node->index;
-		else
-			b->target_node->cost = b->target_node->index - (int)len_a;
-		b = b->next;
-	}
-}
-
-void	set_cheapest_move(t_stack_node *b)
-{
-	t_stack_node	*lower_cost_node;
-	int				total_cost;
-	int				lower_cost;
-
-	lower_cost_node = NULL;
-	lower_cost = INT_MAX;
-	while (b)
-	{
-		b->cheapest = false;
-		total_cost = calc_total_cost(b->cost, b->target_node->cost);
-		if (total_cost < lower_cost)
+		current_b = b;
+		biggest_smallest = LONG_MIN;
+		target_node = NULL;
+		while (current_b)
 		{
-			lower_cost = total_cost;
-			lower_cost_node = b;
+			if (current_b->value < a->value
+				&& current_b->value > biggest_smallest)
+			{
+				biggest_smallest = current_b->value;
+				target_node = current_b;
+			}
+			current_b = current_b->next;
 		}
-		b = b->next;
+		if (!target_node)
+			a->target_node = find_highest(b);
+		else
+			a->target_node = target_node;
+		a = a->next;
 	}
-	lower_cost_node->cheapest = true;
-}
-
-static int	calc_total_cost(int cost_b, int cost_a)
-{
-	if (cost_a < 0)
-		cost_a = -cost_a;
-	if (cost_b < 0)
-		cost_b = -cost_b;
-	return (cost_a + cost_b);
 }

@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/06 12:48:58 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/07 17:16:22 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,17 @@ int	main(int argc, char *argv[])
 
 static int	push_swap(t_stack_node **a, t_stack_node **b)
 {
+	size_t	len_a;
+
 	if (is_sorted(*a))
 		return (0);
-	else if (stack_len(*a) == 2)
+	len_a = stack_len(*a);
+	if (len_a == 2)
 		swap_a(a);
-	else if (stack_len(*a) == 3)
+	else if (len_a == 3)
 		tiny_sort(a);
+	else if (len_a == 4 || len_a == 5)
+		sort_until_five(a, b);
 	else
 		sort_stack(a, b);
 	return (0);
