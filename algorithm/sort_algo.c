@@ -6,12 +6,11 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:53:29 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/07 18:39:48 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:13:32 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-#include <stdio.h>
 
 static void	set_nodes(t_stack_node *a, t_stack_node *b, char dest);
 static void	move_nodes(t_stack_node **a, t_stack_node **b, char dest);
@@ -34,7 +33,7 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 	final_sort_desc(b);
 	if (!is_sorted(*a))
 		tiny_sort(a);
-	while (b)
+	while (*b)
 	{
 		set_nodes(*a, *b, 'a');
 		move_nodes(a, b, 'a');
@@ -54,7 +53,7 @@ static void	set_nodes(t_stack_node *a, t_stack_node *b, char dest)
 	}
 	else
 	{
-		set_b_target_node(b, a);
+		set_b_target_node(a, b);
 		set_cost_move(a, b);
 		set_cheapest_move(b);
 	}
@@ -64,6 +63,7 @@ static void	move_nodes(t_stack_node **a, t_stack_node **b, char dest)
 {
 	t_stack_node	*cheapest_node;
 
+	cheapest_node = NULL;
 	if (dest == 'a')
 		cheapest_node = find_cheapest(*b);
 	else

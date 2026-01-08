@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:40:41 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/07 17:24:23 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/08 09:52:28 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	final_sort_desc(t_stack_node **b)
 	biggest_value = find_highest(*b);
 	len = stack_len(*b);
 	medium = len / 2;
-	if (biggest_value->index >= medium)
+	if (biggest_value->index <= medium)
 		while (*b != biggest_value)
 			rotate_b(b);
 	else

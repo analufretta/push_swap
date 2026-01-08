@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:06:35 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/07 17:18:57 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:10:25 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	sort_until_five(t_stack_node **a, t_stack_node **b)
 		push_a(a, b);
 }
 
-static void	push_smallest_to_b(t_stack_node **a, t_stack_node **b)
+static void	push_smallest_to_b(t_stack_node **a, t_stack_node **b) // this is not efficient in cases such as 1 2 3 4 0, where rotatinf was already a good option
 {
 	t_stack_node	*smallest;
 	size_t			len;
