@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tiny_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:06:35 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/08 10:10:25 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/08 15:28:44 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	tiny_sort(t_stack_node **a)
 void	sort_until_five(t_stack_node **a, t_stack_node **b)
 {
 	size_t	len;
-
+	
 	len = stack_len(*a);
 	if (len == 4)
 		push_smallest_to_b(a, b);
@@ -48,7 +48,7 @@ void	sort_until_five(t_stack_node **a, t_stack_node **b)
 		push_a(a, b);
 }
 
-static void	push_smallest_to_b(t_stack_node **a, t_stack_node **b) // this is not efficient in cases such as 1 2 3 4 0, where rotatinf was already a good option
+static void	push_smallest_to_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*smallest;
 	size_t			len;
@@ -59,7 +59,7 @@ static void	push_smallest_to_b(t_stack_node **a, t_stack_node **b) // this is no
 	middle = len / 2;
 	while (*a != smallest)
 	{
-		if (smallest->index <= middle)
+		if (smallest->index >= middle)
 			rotate_a(a);
 		else
 			rev_rotate_a(a);

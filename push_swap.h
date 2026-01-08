@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/08 10:04:52 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/08 17:23:09 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void					set_cheapest_move(t_stack_node *b);
 void					sort_stack(t_stack_node **a, t_stack_node **b);
 
 /*Tiny sort*/
-void				tiny_sort(t_stack_node **a);
-void				sort_until_five(t_stack_node **a, t_stack_node **b);
+void					tiny_sort(t_stack_node **a);
+void					sort_until_five(t_stack_node **a, t_stack_node **b);
 
 /*Algorithm rotations*/
 void					special_rotate(t_stack_node **a, t_stack_node **b,
@@ -75,7 +75,6 @@ void					final_rotations(t_stack_node **stack, t_stack_node *expected);
 
 /*Final Sort*/
 void					final_sort_asc(t_stack_node **a);
-void					final_sort_desc(t_stack_node **b);
 
 /* Operations */
 void					swap_elements(t_stack_node **stack);

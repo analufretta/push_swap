@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/07 17:16:22 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/08 17:12:20 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		return (1);
 	else if (argc == 2 && !argv[1][0])
-		return (write(1, "Error\n", 6));
+		return (write(2, "Error\n", 6));
 	else if (argc == 2)
 	{
 		split = ft_split(argv[1], ' ');
 		if (!split)
 			return (1);
 		if (intitialize_stack_a(&a, split) != 0)
-			return (free_array(split), write(1, "Error\n", 6));
+			return (free_array(split), write(2, "Error\n", 6));
 		free_array(split);
 	}
 	else if (argc > 2)
 	{
 		if (intitialize_stack_a(&a, argv + 1) != 0)
-			return (write(1, "Error\n", 6));
+			return (write(2, "Error\n", 6));
 	}
 	return (push_swap(&a, &b));
 }

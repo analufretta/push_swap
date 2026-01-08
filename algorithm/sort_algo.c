@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_algo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:53:29 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/08 10:13:32 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/08 17:23:15 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	set_nodes(t_stack_node *a, t_stack_node *b, char dest);
 static void	move_nodes(t_stack_node **a, t_stack_node **b, char dest);
+static void	last_moves(t_stack_node **a, t_stack_node **b, t_stack_node *cheap, char dest);
 
 void	sort_stack(t_stack_node **a, t_stack_node **b)
 {
@@ -21,8 +22,6 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 
 	push_b(a, b);
 	push_b(a, b);
-	if (is_sorted(*b))
-		swap_b(b);
 	len_a = stack_len(*a);
 	while (len_a > 3)
 	{
@@ -30,7 +29,6 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 		move_nodes(a, b, 'b');
 		len_a--;
 	}
-	final_sort_desc(b);
 	if (!is_sorted(*a))
 		tiny_sort(a);
 	while (*b)
@@ -70,20 +68,35 @@ static void	move_nodes(t_stack_node **a, t_stack_node **b, char dest)
 		cheapest_node = find_cheapest(*a);
 	if (!cheapest_node || !cheapest_node->target_node)
 		return ;
-	if (cheapest_node->cost > 0 && cheapest_node->target_node->cost > 0)
-		special_rotate(a, b, cheapest_node);
-	else if (cheapest_node->cost < 0 && cheapest_node->target_node->cost < 0)
-		special_rev_rotate(a, b, cheapest_node);
 	if (dest == 'a')
 	{
-		final_rotations(b, cheapest_node);
-		final_rotations(a, cheapest_node->target_node);
+		if (cheapest_node->cost > 0 && cheapest_node->target_node->cost > 0)
+			special_rotate(a, b, cheapest_node);
+		else if (cheapest_node->cost < 0 && cheapest_node->target_node->cost < 0)
+			special_rev_rotate(a, b, cheapest_node);
+	}
+	else
+	{
+		if (cheapest_node->cost > 0 && cheapest_node->target_node->cost > 0)
+			special_rotate(b, a, cheapest_node);
+		else if (cheapest_node->cost < 0 && cheapest_node->target_node->cost < 0)
+			special_rev_rotate(b, a, cheapest_node);
+	}	
+	last_moves(a, b, cheapest_node, dest);
+}
+
+static void	last_moves(t_stack_node **a, t_stack_node **b, t_stack_node *cheap, char dest)
+{
+	if (dest == 'a')
+	{
+		final_rotations(b, cheap);
+		final_rotations(a, cheap->target_node);
 		push_a(a, b);
 	}
 	else
 	{
-		final_rotations(b, cheapest_node->target_node);
-		final_rotations(a, cheapest_node);
+		final_rotations(b, cheap->target_node);
+		final_rotations(a, cheap);
 		push_b(a, b);
 	}
 }

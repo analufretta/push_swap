@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   final_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:40:41 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/08 09:52:28 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/08 17:23:04 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,3 @@ void	final_sort_asc(t_stack_node **a)
 			rev_rotate_a(a);
 }
 
-void	final_sort_desc(t_stack_node **b)
-{
-	t_stack_node	*biggest_value;
-	size_t			len;
-	int				medium;
-
-	if (!b || !*b)
-		return ;
-	biggest_value = find_highest(*b);
-	len = stack_len(*b);
-	medium = len / 2;
-	if (biggest_value->index <= medium)
-		while (*b != biggest_value)
-			rotate_b(b);
-	else
-		while (*b != biggest_value)
-			rev_rotate_b(b);
-}
