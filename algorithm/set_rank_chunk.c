@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:16:41 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 14:34:59 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:25:03 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,20 @@ int	define_chunk_size(int len)
 		chunk_size = len / 11;
 }
 
-//TODO: set_chunk()
+void	set_chunk(t_stack_node *a, int len, int	chunk_size)
+{
+	int				nodes_per_chunk;
+	int				chunk;
+	t_stack_node 	*current;
+
+	nodes_per_chunk = len / chunk_size;
+	while(current)
+	{
+		chunk = (current->rank / nodes_per_chunk) + 1;
+		if (chunk > chunk_size)
+			chunk = chunk_size;
+		current->chunk = chunk;
+		current = current->next;
+	}
+}
+

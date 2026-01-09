@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:53:29 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 14:31:46 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:25:11 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 	len = stack_len(*a);
 	set_rank(*a, len);
 	chunk_size = define_chunk_size(len);
-	set_chunk(*a); //todo
+	set_chunk(*a, len, chunk_size);
 	push_a_to_b(a, b, len, chunk_size);
 	if (!is_sorted(*a))
 		sort_three(a);
