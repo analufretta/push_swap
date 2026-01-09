@@ -6,52 +6,11 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 10:56:47 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:37:12 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-static void assign_ranks(t_stack_node *a, int *array, size_t len);
-
-void	set_rank(t_stack_node *a, size_t len)
-{
-	int *array;
-	size_t i;
-
-	array = (int *)malloc(sizeof(int) * (len));
-	if (!array)
-		return ;
-	i = 0;
-	while (a)
-	{
-		array[i] = a->value;
-		a = a->next;
-		i++;
-	}
-	sort_array(array, len);
-	assign_rank(a, array, len);
-	free_array(array);
-}
-
-static void assign_ranks(t_stack_node *a, int *array, size_t len)
-{
-	size_t	i;
-	while (a)
-	{
-		i = 0;
-		while(i < len)
-		{
-			if (a->value == array[i])
-			{
-				a->rank = i;
-				break ;
-			}
-			i++;
-		}
-		a = a->next;
-	}
-}
 
 void	set_current_position(t_stack_node *stack)
 {
@@ -125,3 +84,7 @@ void	set_a_target_node(t_stack_node *a, t_stack_node *b)
 		a = a->next;
 	}
 }
+
+//set_allowed_nodes
+//set_target_node_ab
+//set_target_node_ba

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tiny_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:06:35 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/08 15:28:44 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:31:28 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	push_smallest_to_b(t_stack_node **a, t_stack_node **b);
 
-void	tiny_sort(t_stack_node **a)
+void	sort_three(t_stack_node **a)
 {
 	t_stack_node	*highest_node;
 
@@ -34,7 +34,7 @@ void	tiny_sort(t_stack_node **a)
 void	sort_until_five(t_stack_node **a, t_stack_node **b)
 {
 	size_t	len;
-	
+
 	len = stack_len(*a);
 	if (len == 4)
 		push_smallest_to_b(a, b);

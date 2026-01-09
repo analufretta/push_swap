@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 10:36:48 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:36:03 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_stack_node
 	int					index;
 	int					rank;
 	int					cost;
+	int					chunk;
+	bool				allowed;
 	bool				cheapest;
 	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;
@@ -49,6 +51,7 @@ t_stack_node			*find_last_node(t_stack_node *stack);
 t_stack_node			*find_highest(t_stack_node *stack);
 t_stack_node			*find_lowest(t_stack_node *stack);
 t_stack_node			*find_cheapest(t_stack_node *stack);
+//find_highest_rank();
 
 /*Set in Stack*/
 void					set_rank(t_stack_node *a, size_t len);
@@ -62,11 +65,11 @@ void					set_a_target_node(t_stack_node *a, t_stack_node *b);
 void					set_cost_move(t_stack_node *a, t_stack_node *b);
 void					set_cheapest_move(t_stack_node *b);
 
-/* Sorting ALgorithm */
+/* Push Swap Algorithm */
 void					sort_stack(t_stack_node **a, t_stack_node **b);
 
 /*Tiny sort*/
-void					tiny_sort(t_stack_node **a);
+void					sort_three(t_stack_node **a);
 void					sort_until_five(t_stack_node **a, t_stack_node **b);
 
 /*Algorithm rotations*/

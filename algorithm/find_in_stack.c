@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:31:37 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/05 15:24:56 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:35:45 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,5 @@ t_stack_node	*find_cheapest(t_stack_node *stack)
 	cheapesst_node = stack;
 	return (cheapesst_node);
 }
+
+//TODO: find_highest_rank();

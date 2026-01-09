@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:07:39 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 09:37:16 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 13:37:04 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static bool	requisits_stack(char *value, t_stack_node **stack);
 static int	append_to_stack(int nb, t_stack_node **stack);
+static void set_new_node_config(t_stack_node *new, int nb);
 
 int	intitialize_stack_a(t_stack_node **stack, char **argv)
 {
@@ -79,14 +80,7 @@ static int	append_to_stack(int nb, t_stack_node **stack)
 	new = malloc(sizeof(t_stack_node));
 	if (!new)
 		return (error_and_free(stack), 1);
-	new->value = nb;
-	new->index = -1;
-	new->rank = -1;
-	new->cost = 0;
-	new->target_node = NULL;
-	new->cheapest = false;
-	new->next = NULL;
-	new->prev = NULL;
+	set_new_node_config(new, nb);
 	if (!*stack)
 	{
 		*stack = new;
@@ -98,4 +92,18 @@ static int	append_to_stack(int nb, t_stack_node **stack)
 	last->next = new;
 	new->prev = last;
 	return (0);
+}
+
+static void set_new_node_config(t_stack_node *new, int nb)
+{
+	new->value = nb;
+	new->index = -1;
+	new->rank = -1;
+	new->cost = 0;
+	new->chunk = 0;
+	new->target_node = NULL;
+	new->allowed = false;
+	new->cheapest = false;
+	new->next = NULL;
+	new->prev = NULL;
 }
