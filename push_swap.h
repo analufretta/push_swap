@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/08 17:23:09 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 10:36:48 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack_node
 {
 	int					value;
 	int					index;
+	int					rank;
 	int					cost;
 	bool				cheapest;
 	struct s_stack_node	*target_node;
@@ -41,6 +42,7 @@ long					ps_atol(const char *str, unsigned int *error);
 bool					is_repeated(int nb, t_stack_node *stack);
 bool					is_sorted(t_stack_node *a);
 size_t					stack_len(t_stack_node *stack);
+void					sort_array(char array, size_t len);
 
 /*Find in Stack*/
 t_stack_node			*find_last_node(t_stack_node *stack);
@@ -49,6 +51,7 @@ t_stack_node			*find_lowest(t_stack_node *stack);
 t_stack_node			*find_cheapest(t_stack_node *stack);
 
 /*Set in Stack*/
+void					set_rank(t_stack_node *a, size_t len);
 void					set_current_position(t_stack_node *stack);
 void					set_target_node(t_stack_node *src, t_stack_node *dst,
 							char src_stack);

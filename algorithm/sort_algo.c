@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_algo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:53:29 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/08 17:23:15 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 11:04:20 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,22 @@ static void	set_nodes(t_stack_node *a, t_stack_node *b, char dest);
 static void	move_nodes(t_stack_node **a, t_stack_node **b, char dest);
 static void	last_moves(t_stack_node **a, t_stack_node **b, t_stack_node *cheap, char dest);
 
-void	sort_stack(t_stack_node **a, t_stack_node **b)
+void	sort_stack(t_stack_node **a, t_stack_node **b) //remake
 {
 	size_t	len_a;
 
-	push_b(a, b);
-	push_b(a, b);
 	len_a = stack_len(*a);
+	set_rank(*a, len_a);
+	if (len_a <= 100)
+		//divide by
+	else if (len_a <= 500)
+		//divide by 5
+	else
+		//divide by 11
+
 	while (len_a > 3)
 	{
+		//send
 		set_nodes(*a, *b, 'b');
 		move_nodes(a, b, 'b');
 		len_a--;
@@ -81,7 +88,7 @@ static void	move_nodes(t_stack_node **a, t_stack_node **b, char dest)
 			special_rotate(b, a, cheapest_node);
 		else if (cheapest_node->cost < 0 && cheapest_node->target_node->cost < 0)
 			special_rev_rotate(b, a, cheapest_node);
-	}	
+	}
 	last_moves(a, b, cheapest_node, dest);
 }
 
