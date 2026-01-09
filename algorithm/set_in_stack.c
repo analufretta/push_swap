@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 14:37:12 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:27:59 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ void	set_a_target_node(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-//set_allowed_nodes
+void	set_allowed_nodes(t_stack_node *a, int chunk_size)
+{
+	while(a)
+	{
+		
+	}
+}
 //set_target_node_ab
 //set_target_node_ba

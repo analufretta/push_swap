@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:53:29 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 15:25:11 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:27:30 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void push_a_to_b(t_stack_node **a, t_stack_node **b, int len, int chunk_s
 {
 	while(len > 3)
 	{
-		allow_nodes(*a); //todo
+		set_allowed_nodes(*a, chunk_size); //todo
 		set_current_position(*a);
 		set_current_position(*b);
 		set_target_node_ab(*a, *b); //todo
