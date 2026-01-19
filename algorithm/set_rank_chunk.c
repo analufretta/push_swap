@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:16:41 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 15:25:03 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:33:26 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,27 @@ static void assign_ranks(t_stack_node *a, int *array, size_t len)
 
 int	define_chunk_size(int len)
 {
-	int	chunk_size;
-
 	if (len <=10)
-		chunk_size = len / 1;
-	if (len <= 100)
-		chunk_size = len / 5;
+		return (1);
+	else if (len <= 100)
+		return (5);
 	else
-		chunk_size = len / 11;
+		return (11);
 }
 
-void	set_chunk(t_stack_node *a, int len, int	chunk_size)
+void	set_chunk(t_stack_node *a, int len, int	chunks)
 {
 	int				nodes_per_chunk;
-	int				chunk;
-	t_stack_node 	*current;
+	int				assigned_chunk;
 
-	nodes_per_chunk = len / chunk_size;
-	while(current)
+	nodes_per_chunk = len / chunks;
+	while(a)
 	{
-		chunk = (current->rank / nodes_per_chunk) + 1;
-		if (chunk > chunk_size)
-			chunk = chunk_size;
-		current->chunk = chunk;
-		current = current->next;
+		assigned_chunk = (a->rank / nodes_per_chunk) + 1;
+		if (assigned_chunk > chunks)
+			assigned_chunk = chunks;
+		a->chunk = assigned_chunk;
+		a = a->next;
 	}
 }
 

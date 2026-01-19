@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 14:36:03 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:28:12 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void					set_b_target_node(t_stack_node *a, t_stack_node *b);
 void					set_a_target_node(t_stack_node *a, t_stack_node *b);
 
 /*Cost Caltulations*/
-void					set_cost_move(t_stack_node *a, t_stack_node *b);
-void					set_cheapest_move(t_stack_node *b);
+void					set_cost_move(t_stack_node *stack);
+void					set_cheapest_move(t_stack_node *stack);
 
 /* Push Swap Algorithm */
 void					sort_stack(t_stack_node **a, t_stack_node **b);

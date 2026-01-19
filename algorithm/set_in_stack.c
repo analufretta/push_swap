@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 15:27:59 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:29:49 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,70 +27,71 @@ void	set_current_position(t_stack_node *stack)
 	}
 }
 
-void	set_b_target_node(t_stack_node *a, t_stack_node *b)
+void	set_allowed_nodes(t_stack_node *a, int chunks)
 {
-	t_stack_node	*current_a;
-	t_stack_node	*target_node;
-	long			smallest_biggest;
+	int	current_chunk;
+	t_stack_node *current;
 
-	while (b)
+	current_chunk = 1;
+	while(current_chunk <= chunks)
 	{
-		current_a = a;
-		smallest_biggest = LONG_MAX;
-		target_node = NULL;
-		while (current_a)
-		{
-			if (current_a->value > b->value
-				&& current_a->value < smallest_biggest)
-			{
-				smallest_biggest = current_a->value;
-				target_node = current_a;
-			}
-			current_a = current_a->next;
-		}
-		if (!target_node)
-			b->target_node = find_lowest(a);
-		else
-			b->target_node = target_node;
-		b = b->next;
+		current = a;
+		while(current && current->chunk != current_chunk)
+			current = current->next;
+		if(current)
+			break;
+		current_chunk++;
 	}
-}
-
-void	set_a_target_node(t_stack_node *a, t_stack_node *b)
-{
-	t_stack_node	*current_b;
-	t_stack_node	*target_node;
-	long			biggest_smallest;
-
-	while (a)
+	while(a)
 	{
-		current_b = b;
-		biggest_smallest = LONG_MIN;
-		target_node = NULL;
-		while (current_b)
-		{
-			if (current_b->value < a->value
-				&& current_b->value > biggest_smallest)
-			{
-				biggest_smallest = current_b->value;
-				target_node = current_b;
-			}
-			current_b = current_b->next;
-		}
-		if (!target_node)
-			a->target_node = find_highest(b);
-		else
-			a->target_node = target_node;
+		a->allowed = (a->chunk == current_chunk);
 		a = a->next;
 	}
 }
 
-void	set_allowed_nodes(t_stack_node *a, int chunk_size)
+void	set_allowed_nodes_back(t_stack_node *a, int chunks)
 {
+	int	current_chunk;
+	t_stack_node *current;
+
+	current_chunk = chunks;
+	while(current_chunk >= 1)
+	{
+		current = a;
+		while(current && current->chunk != current_chunk)
+			current = current->next;
+		if(current)
+			break;
+		current_chunk--;
+	}
 	while(a)
 	{
-		
+		a->allowed = (a->chunk == current_chunk);
+		a = a->next;
 	}
 }
-//set_target_node_ab
-//set_target_node_ba
+
+void	set_target_node_a(t_stack_node *target, t_stack_node *a)
+{
+	t_stack_node	*current_a;
+	t_stack_node	*target_node_a;
+	long			smallest_biggest;
+
+	current_a = a;
+	smallest_biggest = LONG_MAX;
+	target_node_a = NULL;
+	while (current_a)
+	{
+		if (current_a->value > target->value
+			&& current_a->value < smallest_biggest)
+		{
+			smallest_biggest = current_a->value;
+			target_node_a = current_a;
+		}
+		current_a = current_a->next;
+	}
+	if (!target_node_a)
+		target->target_node = find_lowest(a);
+	else
+		target->target_node = target_node_a;
+}

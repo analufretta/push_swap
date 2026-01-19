@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:53:29 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 15:27:30 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:56:42 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,34 @@ static void push_b_to_a(t_stack_node **a, t_stack_node **b, int chunk_size);
 void	sort_stack(t_stack_node **a, t_stack_node **b)
 {
 	size_t	len;
-	int		chunk_size;
+	int		chunks;
 
 	len = stack_len(*a);
 	set_rank(*a, len);
-	chunk_size = define_chunk_size(len);
-	set_chunk(*a, len, chunk_size);
-	push_a_to_b(a, b, len, chunk_size);
+	chunks = define_chunk_size(len);
+	set_chunk(*a, len, chunks);
+	push_a_to_b(a, b, len, chunks);
 	if (!is_sorted(*a))
 		sort_three(a);
-	push_b_to_a(a, b, chunk_size);
-	final_sort_asc(a); //review
+	push_b_to_a(a, b, chunks);
+	final_sort_asc(a);
 }
 
-static void push_a_to_b(t_stack_node **a, t_stack_node **b, int len, int chunk_size)
+static void push_a_to_b(t_stack_node **a, t_stack_node **b, int len, int chunks)
 {
 	while(len > 3)
 	{
-		set_allowed_nodes(*a, chunk_size); //todo
+		set_allowed_nodes(*a, chunks);
 		set_current_position(*a);
-		set_current_position(*b);
-		set_target_node_ab(*a, *b); //todo
-		set_cost_move(*a); //redo
-		set_cost_move(*b); //redo
-		set_cheapest_move(*a); //check if it is correct
-		rotate_cheapest_node(*a, *b); //todo
+		set_cost_move(*a);
+		set_cheapest_move(*a);
+		rotate_cheapest_a(a);
 		push_b(a, b);
 		len--;
 	}
 }
 
-static void push_b_to_a(t_stack_node **a, t_stack_node **b, int chunk_size)
+static void push_b_to_a(t_stack_node **a, t_stack_node **b, int chunks)
 {
 	t_stack_node *target;
 
@@ -57,11 +54,12 @@ static void push_b_to_a(t_stack_node **a, t_stack_node **b, int chunk_size)
 	{
 		set_current_position(*a);
 		set_current_position(*b);
-		target = find_highest_rank(*b); //todo: use chunk ans rage to find more effitiently the highest one
-		set_target_node_ba(target, *a); //todo
-		set_cost_move(*a); //check if it is correct
-		calc_target_move(*a, *b, target); //todo: set target as cheapest && calc rotations
-		rotate_cheapest_node(*b, *a); //todo
+		set_allowed_nodes_back(*b, chunks);
+		target = find_highest_rank(*b);
+		set_target_node_a(target, *a);
+		set_cost_move(*a);
+		calc_target_move(*a, *b, target);
+		rotate_target_node(a, b, target);
 		push_a(a, b);
 	}
 }

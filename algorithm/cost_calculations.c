@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 14:35:33 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 14:38:05 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:45:07 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,30 @@
 
 static int	ps_max(int x, int y);
 static int	calc_total_cost(int cost_b, int cost_a);
+static int	ps_abs(int cost);
 
-void	set_cost_move(t_stack_node *src, t_stack_node *dst)
+void	set_cost_move(t_stack_node *stack)
 {
-	size_t	len_src;
-	size_t	len_dst;
-	int		medium_src;
-	int		medium_dst;
+	size_t	len;
+	int		medium;
 
-	len_src = stack_len(src);
-	len_dst = stack_len(dst);
-	medium_src = len_src / 2;
-	medium_dst = len_dst / 2;
-	while (src)
+	len = stack_len(stack);
+	medium = len / 2;
+	while (stack)
 	{
-		if (src->index <= medium_src)
-			src->cost = src->index;
+		if (stack->index <= medium)
+			stack->cost = stack->index;
 		else
-			src->cost = src->index - (int)len_src;
-		if (src->target_node->index <= medium_dst)
-			src->target_node->cost = src->target_node->index;
-		else
-			src->target_node->cost = src->target_node->index - (int)len_dst;
-		src = src->next;
+			stack->cost = stack->index - (int)len;
+
+		stack = stack->next;
 	}
 }
 
 void	set_cheapest_move(t_stack_node *stack)
 {
 	t_stack_node	*lower_cost_node;
-	int				total_cost;
+	int				cost;
 	int				lower_cost;
 
 	lower_cost_node = NULL;
@@ -51,49 +45,38 @@ void	set_cheapest_move(t_stack_node *stack)
 	while (stack)
 	{
 		stack->cheapest = false;
-		total_cost = calc_total_cost(stack->cost, stack->target_node->cost);
-		if (total_cost < lower_cost)
+		if(stack->allowed)
 		{
-			lower_cost = total_cost;
-			lower_cost_node = stack;
+			cost = ps_abs(stack->cost);
+			if (cost < lower_cost)
+			{
+				lower_cost = cost;
+				lower_cost_node = stack;
+			}
 		}
 		stack = stack->next;
 	}
 	lower_cost_node->cheapest = true;
 }
 
-static int	calc_total_cost(int cost_node, int cost_target)
+static int	ps_abs(int cost)
 {
-	int	total_cost;
-
-	if (cost_node < 0 && cost_target < 0)
-	{
-		cost_node = -cost_node;
-		cost_target = -cost_target;
-		total_cost = ps_max(cost_node, cost_target);
-	}
-	else if (cost_node >= 0 && cost_target >= 0)
-		total_cost = ps_max(cost_node, cost_target);
-	else
-	{
-		if (cost_node < 0)
-			cost_node = -cost_node;
-		if (cost_target < 0)
-			cost_target = -cost_target;
-		total_cost = cost_node + cost_target;
-	}
-	return (total_cost);
+	if(cost < 0)
+		cost = -cost;
+	return(cost);
 }
 
-static int	ps_max(int x, int y)
+void	calc_target_move(t_stack_node *a, t_stack_node *b, t_stack_node *target)
 {
-	int	max;
+	size_t len_b;
+	size_t medium_b;
 
-	if (x >= y)
-		max = x;
+	len_b = stack_len(b);
+	medium_b = len_b / 2;
+
+	if(target->index <= medium_b)
+		target->cost = target->index;
 	else
-		max = y;
-	return (max);
+		target->cost = target->index - (int)len_b;
 }
 
-//calc_target_move();
