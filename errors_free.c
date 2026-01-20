@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:10:38 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/02 12:04:18 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:31:33 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,4 @@ void	free_array(char **array)
 		free(array[i++]);
 	free(array);
 }
+

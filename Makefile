@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+         #
+#    By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/15 15:40:08 by afretta-          #+#    #+#              #
-#    Updated: 2026/01/08 10:04:18 by afretta-         ###   ########.fr        #
+#    Updated: 2026/01/20 14:12:31 by afretta-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,16 +27,16 @@ LIBFT = $(LIBFT_DIR)/libft.a
 INCLUDES = -I. -I$(LIBFT_DIR)
 
 # ================= SOURCES =================
-SRCS = 	push_swap.c \
+SRCS = 	main.c \
 		create_stack.c \
 		errors_free.c \
 		utils.c \
 		algorithm/algorithm_rotations.c \
 		algorithm/cost_calculations.c \
-		algorithm/final_sort.c \
 		algorithm/find_in_stack.c \
+		algorithm/push_swap.c \
 		algorithm/set_in_stack.c \
-		algorithm/sort_algo.c \
+		algorithm/set_rank_chunk.c \
 		algorithm/tiny_sort.c \
 		operations/push.c \
 		operations/reverse.c \

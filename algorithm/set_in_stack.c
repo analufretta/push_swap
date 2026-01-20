@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_in_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/19 16:29:49 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:52:02 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	set_allowed_nodes(t_stack_node *a, int chunks)
 
 void	set_allowed_nodes_back(t_stack_node *a, int chunks)
 {
-	int	current_chunk;
-	t_stack_node *current;
+	int				current_chunk;
+	t_stack_node	*current;
 
 	current_chunk = chunks;
 	while(current_chunk >= 1)

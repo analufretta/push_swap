@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_rotations.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:43:56 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/19 16:55:52 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:14:27 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reotate_cheapest_a(t_stack_node **a)
+void	rotate_cheapest_a(t_stack_node **a)
 {
 	t_stack_node *cheapest_node;
 
-	cheapest_node = a;
+	cheapest_node = *a;
 	while(cheapest_node)
 	{
 		if(cheapest_node->cheapest)
@@ -24,10 +24,10 @@ void	reotate_cheapest_a(t_stack_node **a)
 		cheapest_node = cheapest_node->next;
 	}
 	if(cheapest_node->cost > 0)
-		while(a != cheapest_node)
+		while(*a != cheapest_node)
 			rotate_a(a);
 	else
-		while(a != cheapest_node)
+		while(*a != cheapest_node)
 			rev_rotate_a(a);
 }
 

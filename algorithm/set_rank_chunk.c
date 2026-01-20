@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_rank_chunk.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:16:41 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/19 16:33:26 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:31:59 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	set_rank(t_stack_node *a, size_t len)
 		i++;
 	}
 	sort_array(array, len);
-	assign_rank(a, array, len);
-	free_array(array);
+	assign_ranks(a, array, len);
+	free(array);
 }
 
 static void assign_ranks(t_stack_node *a, int *array, size_t len)

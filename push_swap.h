@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/19 15:28:12 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:33:01 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,42 +44,39 @@ long					ps_atol(const char *str, unsigned int *error);
 bool					is_repeated(int nb, t_stack_node *stack);
 bool					is_sorted(t_stack_node *a);
 size_t					stack_len(t_stack_node *stack);
-void					sort_array(char array, size_t len);
+void					sort_array(int *array, size_t len);
 
 /*Find in Stack*/
 t_stack_node			*find_last_node(t_stack_node *stack);
 t_stack_node			*find_highest(t_stack_node *stack);
 t_stack_node			*find_lowest(t_stack_node *stack);
 t_stack_node			*find_cheapest(t_stack_node *stack);
-//find_highest_rank();
+t_stack_node			*find_highest_rank(t_stack_node *stack);
 
 /*Set in Stack*/
-void					set_rank(t_stack_node *a, size_t len);
 void					set_current_position(t_stack_node *stack);
-void					set_target_node(t_stack_node *src, t_stack_node *dst,
-							char src_stack);
-void					set_b_target_node(t_stack_node *a, t_stack_node *b);
-void					set_a_target_node(t_stack_node *a, t_stack_node *b);
+void					set_allowed_nodes(t_stack_node *a, int chunks);
+void					set_allowed_nodes_back(t_stack_node *a, int chunks);
+void					set_target_node_a(t_stack_node *target, t_stack_node *a);
+
+/*Set rank & chunk*/
+void					set_rank(t_stack_node *a, size_t len);
+int						define_chunk_size(int len);
+void					set_chunk(t_stack_node *a, int len, int	chunks);
 
 /*Cost Caltulations*/
 void					set_cost_move(t_stack_node *stack);
 void					set_cheapest_move(t_stack_node *stack);
+void					calc_target_cost(t_stack_node *b, t_stack_node *target);
 
-/* Push Swap Algorithm */
+/* Push Swap Algorithm & Tiny Sort*/
 void					sort_stack(t_stack_node **a, t_stack_node **b);
-
-/*Tiny sort*/
 void					sort_three(t_stack_node **a);
 void					sort_until_five(t_stack_node **a, t_stack_node **b);
 
 /*Algorithm rotations*/
-void					special_rotate(t_stack_node **a, t_stack_node **b,
-							t_stack_node *cheapest_node);
-void					special_rev_rotate(t_stack_node **a, t_stack_node **b,
-							t_stack_node *cheapest_node);
-void					final_rotations(t_stack_node **stack, t_stack_node *expected);
-
-/*Final Sort*/
+void					rotate_cheapest_a(t_stack_node **a);
+void					rotate_target_node(t_stack_node **a, t_stack_node **b, t_stack_node *target);
 void					final_sort_asc(t_stack_node **a);
 
 /* Operations */

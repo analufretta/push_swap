@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cost_calculations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 14:35:33 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/19 16:45:07 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:15:11 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ps_max(int x, int y);
-static int	calc_total_cost(int cost_b, int cost_a);
 static int	ps_abs(int cost);
 
 void	set_cost_move(t_stack_node *stack)
@@ -66,14 +64,13 @@ static int	ps_abs(int cost)
 	return(cost);
 }
 
-void	calc_target_move(t_stack_node *a, t_stack_node *b, t_stack_node *target)
+void	calc_target_cost(t_stack_node *b, t_stack_node *target)
 {
 	size_t len_b;
-	size_t medium_b;
+	int medium_b;
 
 	len_b = stack_len(b);
 	medium_b = len_b / 2;
-
 	if(target->index <= medium_b)
 		target->cost = target->index;
 	else

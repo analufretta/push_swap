@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:53:29 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/19 16:56:42 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 15:22:14 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void push_b_to_a(t_stack_node **a, t_stack_node **b, int chunks)
 {
 	t_stack_node *target;
 
+	target = NULL;
 	while(*b)
 	{
 		set_current_position(*a);
@@ -58,7 +59,7 @@ static void push_b_to_a(t_stack_node **a, t_stack_node **b, int chunks)
 		target = find_highest_rank(*b);
 		set_target_node_a(target, *a);
 		set_cost_move(*a);
-		calc_target_move(*a, *b, target);
+		calc_target_cost(*b, target);
 		rotate_target_node(a, b, target);
 		push_a(a, b);
 	}
