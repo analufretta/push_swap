@@ -6,15 +6,14 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:53:29 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 16:10:25 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:46:41 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
 static void push_a_to_b(t_stack_node **a, t_stack_node **b, int len, int chunk_size);
-static void push_b_to_a(t_stack_node **a, t_stack_node **b);
-
+static void push_b_to_a(t_stack_node **a, t_stack_node **b, int chunks);
 
 void	sort_stack(t_stack_node **a, t_stack_node **b)
 {
@@ -28,7 +27,7 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 	push_a_to_b(a, b, len, chunks);
 	if (!is_sorted(*a))
 		sort_three(a);
-	push_b_to_a(a, b);
+	push_b_to_a(a, b, chunks);
 	final_sort_asc(a);
 }
 
@@ -46,7 +45,7 @@ static void push_a_to_b(t_stack_node **a, t_stack_node **b, int len, int chunks)
 	}
 }
 
-static void push_b_to_a(t_stack_node **a, t_stack_node **b)
+static void push_b_to_a(t_stack_node **a, t_stack_node **b, int chunks)
 {
 	t_stack_node *target;
 
@@ -57,6 +56,7 @@ static void push_b_to_a(t_stack_node **a, t_stack_node **b)
 		set_current_position(*b);
 		set_cost_move(*a);
 		set_cost_move(*b);
+		set_allowed_back(*b, chunks);
 		set_target_node(*a, *b);
 		set_cheapest_move(*b);
 		rotate_cheapest_nodes(a, b);

@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 15:41:02 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:44:41 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,28 @@ void	set_allowed_nodes(t_stack_node *a, int chunks)
 	}
 }
 
+void	set_allowed_back(t_stack_node *b, int chunks)
+{
+	int	current_chunk;
+	t_stack_node *current;
+
+	current_chunk = chunks;
+	while(current_chunk)
+	{
+		current = b;
+		while(current && current->chunk != current_chunk)
+			current = current->next;
+		if(current)
+			break;
+		current_chunk--;
+	}
+	while(b)
+	{
+		b->allowed = (b->chunk == current_chunk);
+		b = b->next;
+	}
+}
+
 void	set_target_node(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
@@ -60,20 +82,23 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 		current_a = a;
 		smallest_biggest = LONG_MAX;
 		target_node = NULL;
-		while (current_a)
+		if(b->allowed)
 		{
-			if (current_a->value > b->value
-				&& current_a->value < smallest_biggest)
+			while (current_a)
 			{
-				smallest_biggest = current_a->value;
-				target_node = current_a;
+				if (current_a->value > b->value
+					&& current_a->value < smallest_biggest)
+				{
+					smallest_biggest = current_a->value;
+					target_node = current_a;
+				}
+				current_a = current_a->next;
 			}
-			current_a = current_a->next;
+			if (!target_node)
+				b->target_node = find_lowest(a);
+			else
+				b->target_node = target_node;
 		}
-		if (!target_node)
-			b->target_node = find_lowest(a);
-		else
-			b->target_node = target_node;
 		b = b->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 16:07:32 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:40:22 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_stack_node			*find_cheapest_node(t_stack_node *stack);
 /*Set in Stack*/
 void					set_current_position(t_stack_node *stack);
 void					set_allowed_nodes(t_stack_node *a, int chunks);
+void					set_allowed_back(t_stack_node *b, int chunks);
 void					set_target_node(t_stack_node *a, t_stack_node *b);
 
 

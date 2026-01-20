@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 14:35:33 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 16:08:53 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:46:23 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,16 @@ void	set_cheapest_move(t_stack_node *b)
 	while (b)
 	{
 		b->cheapest = false;
-		push_cost = total_cost(b);
-		if(push_cost < lowest_cost)
+		if(b->allowed)
 		{
-			cheapet_node = b;
-			lowest_cost = push_cost;
+			push_cost = total_cost(b);
+			if(push_cost < lowest_cost)
+			{
+				cheapet_node = b;
+				lowest_cost = push_cost;
+			}
+			b = b->next;
 		}
-		b = b->next;
 	}
 	cheapet_node->cheapest = true;	
 }
