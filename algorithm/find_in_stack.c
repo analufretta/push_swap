@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:31:37 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 14:32:47 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:02:37 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,6 @@ t_stack_node	*find_lowest(t_stack_node *stack)
 	return (lowest_node);
 }
 
-t_stack_node	*find_cheapest(t_stack_node *stack)
-{
-	t_stack_node	*cheapesst_node;
-
-	if (!stack)
-		return (NULL);
-	cheapesst_node = NULL;
-	while (stack->cheapest == false)
-		stack = stack->next;
-	cheapesst_node = stack;
-	return (cheapesst_node);
-}
-
 t_stack_node	*find_highest_rank(t_stack_node *stack)
 {
 	t_stack_node	*highest_rank;
@@ -98,4 +85,20 @@ t_stack_node	*find_highest_rank(t_stack_node *stack)
 		stack = stack->next;
 	}
 	return (highest_rank);
+}
+
+t_stack_node	*find_cheapest_node(t_stack_node *stack)
+{
+	t_stack_node *cheapest_node;
+	
+	cheapest_node = NULL;
+	while(stack)
+	{
+		if(!stack->cheapest)
+			stack = stack->next;
+		else
+			break;
+	}
+	cheapest_node = stack;
+	return (cheapest_node);
 }

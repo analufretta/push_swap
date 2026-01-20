@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:43:56 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 14:14:27 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:05:19 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,31 @@ void	rotate_cheapest_a(t_stack_node **a)
 			rev_rotate_a(a);
 }
 
-void	rotate_target_node(t_stack_node **a, t_stack_node **b, t_stack_node *target)
+void	rotate_cheapest_nodes(t_stack_node **a, t_stack_node **b)
 {
-	if(target->cost > 0 && target->target_node->cost > 0)
-		while(*a != target->target_node && *b != target)
+	t_stack_node *cheapest_node;
+
+	cheapest_node = NULL;
+	cheapest_node = find_cheapest_node(*b);
+		
+	if(cheapest_node->cost > 0 && cheapest_node->target_node->cost > 0)
+		while(*a != cheapest_node->target_node && *b != cheapest_node)
 			rotate_both(a, b);
-	else if (target->cost < 0 && target->target_node < 0)
-		while(*a != target->target_node && *b != target)
+	else if (cheapest_node->cost < 0 && cheapest_node->target_node < 0)
+		while(*a != cheapest_node->target_node && *b != cheapest_node)
 			rev_rotate_both(a, b);
-	while(*a != target->target_node)
+	while(*a != cheapest_node->target_node)
 	{
-		if(target->target_node->cost > 0)
+		if(cheapest_node->target_node->cost > 0)
 			rotate_a(a);
-		else if(target->target_node->cost < 0)
+		else if(cheapest_node->target_node->cost < 0)
 			rev_rotate_a(a);
 	}
-	while(*b != target)
+	while(*b != cheapest_node)
 	{
-		if(target->cost > 0)
+		if(cheapest_node->cost > 0)
 			rotate_b(b);
-		else if(target->cost < 0)
+		else if(cheapest_node->cost < 0)
 			rev_rotate_b(b);
 	}
 }

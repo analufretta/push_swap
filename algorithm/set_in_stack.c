@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 13:52:02 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/20 15:41:02 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,49 +49,31 @@ void	set_allowed_nodes(t_stack_node *a, int chunks)
 	}
 }
 
-void	set_allowed_nodes_back(t_stack_node *a, int chunks)
-{
-	int				current_chunk;
-	t_stack_node	*current;
-
-	current_chunk = chunks;
-	while(current_chunk >= 1)
-	{
-		current = a;
-		while(current && current->chunk != current_chunk)
-			current = current->next;
-		if(current)
-			break;
-		current_chunk--;
-	}
-	while(a)
-	{
-		a->allowed = (a->chunk == current_chunk);
-		a = a->next;
-	}
-}
-
-void	set_target_node_a(t_stack_node *target, t_stack_node *a)
+void	set_target_node(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
-	t_stack_node	*target_node_a;
+	t_stack_node	*target_node;
 	long			smallest_biggest;
 
-	current_a = a;
-	smallest_biggest = LONG_MAX;
-	target_node_a = NULL;
-	while (current_a)
+	while (b)
 	{
-		if (current_a->value > target->value
-			&& current_a->value < smallest_biggest)
+		current_a = a;
+		smallest_biggest = LONG_MAX;
+		target_node = NULL;
+		while (current_a)
 		{
-			smallest_biggest = current_a->value;
-			target_node_a = current_a;
+			if (current_a->value > b->value
+				&& current_a->value < smallest_biggest)
+			{
+				smallest_biggest = current_a->value;
+				target_node = current_a;
+			}
+			current_a = current_a->next;
 		}
-		current_a = current_a->next;
+		if (!target_node)
+			b->target_node = find_lowest(a);
+		else
+			b->target_node = target_node;
+		b = b->next;
 	}
-	if (!target_node_a)
-		target->target_node = find_lowest(a);
-	else
-		target->target_node = target_node_a;
 }
