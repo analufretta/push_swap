@@ -72,6 +72,8 @@ https://www.youtube.com/watch?v=Y95a-8oNqps
 
 https://medium.com/@ayogun/push-swap-c1f5d2d41e97
 
+https://www.youtube.com/watch?v=OaG81sDEpVk
+
 
 ### AI Assistance
 
