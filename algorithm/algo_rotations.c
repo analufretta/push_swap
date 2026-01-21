@@ -14,48 +14,47 @@
 
 void	rotate_cheapest_a(t_stack_node **a)
 {
-	t_stack_node *cheapest_node;
+	t_stack_node	*cheapest_node;
 
 	cheapest_node = *a;
-	while(cheapest_node)
+	while (cheapest_node)
 	{
-		if(cheapest_node->cheapest)
-			break;
+		if (cheapest_node->cheapest)
+			break ;
 		cheapest_node = cheapest_node->next;
 	}
-	if(cheapest_node->cost > 0)
-		while(*a != cheapest_node)
+	if (cheapest_node->cost > 0)
+		while (*a != cheapest_node)
 			rotate_a(a);
 	else
-		while(*a != cheapest_node)
+		while (*a != cheapest_node)
 			rev_rotate_a(a);
 }
 
 void	rotate_cheapest_nodes(t_stack_node **a, t_stack_node **b)
 {
-	t_stack_node *cheapest_node;
+	t_stack_node	*cheapest_node;
 
 	cheapest_node = NULL;
 	cheapest_node = find_cheapest_node(*b);
-		
-	if(cheapest_node->cost > 0 && cheapest_node->target_node->cost > 0)
-		while(*a != cheapest_node->target_node && *b != cheapest_node)
+	if (cheapest_node->cost > 0 && cheapest_node->target_node->cost > 0)
+		while (*a != cheapest_node->target_node && *b != cheapest_node)
 			rotate_both(a, b);
 	else if (cheapest_node->cost < 0 && cheapest_node->target_node < 0)
-		while(*a != cheapest_node->target_node && *b != cheapest_node)
+		while (*a != cheapest_node->target_node && *b != cheapest_node)
 			rev_rotate_both(a, b);
-	while(*a != cheapest_node->target_node)
+	while (*a != cheapest_node->target_node)
 	{
-		if(cheapest_node->target_node->cost > 0)
+		if (cheapest_node->target_node->cost > 0)
 			rotate_a(a);
-		else if(cheapest_node->target_node->cost < 0)
+		else if (cheapest_node->target_node->cost < 0)
 			rev_rotate_a(a);
 	}
-	while(*b != cheapest_node)
+	while (*b != cheapest_node)
 	{
-		if(cheapest_node->cost > 0)
+		if (cheapest_node->cost > 0)
 			rotate_b(b);
-		else if(cheapest_node->cost < 0)
+		else if (cheapest_node->cost < 0)
 			rev_rotate_b(b);
 	}
 }

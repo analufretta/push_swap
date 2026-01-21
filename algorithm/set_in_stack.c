@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_in_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 16:44:41 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 09:32:21 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,45 +29,23 @@ void	set_current_position(t_stack_node *stack)
 
 void	set_allowed_nodes(t_stack_node *a, int chunks)
 {
-	int	current_chunk;
-	t_stack_node *current;
+	int				current_chunk;
+	t_stack_node	*current;
 
 	current_chunk = 1;
-	while(current_chunk <= chunks)
+	while (current_chunk <= chunks)
 	{
 		current = a;
-		while(current && current->chunk != current_chunk)
+		while (current && current->chunk != current_chunk)
 			current = current->next;
-		if(current)
-			break;
+		if (current)
+			break ;
 		current_chunk++;
 	}
-	while(a)
+	while (a)
 	{
 		a->allowed = (a->chunk == current_chunk);
 		a = a->next;
-	}
-}
-
-void	set_allowed_back(t_stack_node *b, int chunks)
-{
-	int	current_chunk;
-	t_stack_node *current;
-
-	current_chunk = chunks;
-	while(current_chunk)
-	{
-		current = b;
-		while(current && current->chunk != current_chunk)
-			current = current->next;
-		if(current)
-			break;
-		current_chunk--;
-	}
-	while(b)
-	{
-		b->allowed = (b->chunk == current_chunk);
-		b = b->next;
 	}
 }
 
@@ -82,23 +60,20 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 		current_a = a;
 		smallest_biggest = LONG_MAX;
 		target_node = NULL;
-		if(b->allowed)
+		while (current_a)
 		{
-			while (current_a)
+			if (current_a->value > b->value
+				&& current_a->value < smallest_biggest)
 			{
-				if (current_a->value > b->value
-					&& current_a->value < smallest_biggest)
-				{
-					smallest_biggest = current_a->value;
-					target_node = current_a;
-				}
-				current_a = current_a->next;
+				smallest_biggest = current_a->value;
+				target_node = current_a;
 			}
-			if (!target_node)
-				b->target_node = find_lowest(a);
-			else
-				b->target_node = target_node;
+			current_a = current_a->next;
 		}
+		if (!target_node)
+			b->target_node = find_lowest(a);
+		else
+			b->target_node = target_node;
 		b = b->next;
 	}
 }

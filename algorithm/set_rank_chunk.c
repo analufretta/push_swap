@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-static void assign_ranks(t_stack_node *a, int *array, size_t len);
+static void	assign_ranks(t_stack_node *a, int *array, size_t len);
 
 void	set_rank(t_stack_node *a, size_t len)
 {
-	int *array;
-	size_t i;
+	int		*array;
+	size_t	i;
 
 	array = (int *)malloc(sizeof(int) * (len));
 	if (!array)
@@ -34,13 +34,14 @@ void	set_rank(t_stack_node *a, size_t len)
 	free(array);
 }
 
-static void assign_ranks(t_stack_node *a, int *array, size_t len)
+static void	assign_ranks(t_stack_node *a, int *array, size_t len)
 {
 	size_t	i;
+
 	while (a)
 	{
 		i = 0;
-		while(i < len)
+		while (i < len)
 		{
 			if (a->value == array[i])
 			{
@@ -55,7 +56,7 @@ static void assign_ranks(t_stack_node *a, int *array, size_t len)
 
 int	define_chunk_size(int len)
 {
-	if (len <=10)
+	if (len <= 10)
 		return (1);
 	else if (len <= 100)
 		return (5);
@@ -63,13 +64,13 @@ int	define_chunk_size(int len)
 		return (11);
 }
 
-void	set_chunk(t_stack_node *a, int len, int	chunks)
+void	set_chunk(t_stack_node *a, int len, int chunks)
 {
-	int				nodes_per_chunk;
-	int				assigned_chunk;
+	int	nodes_per_chunk;
+	int	assigned_chunk;
 
 	nodes_per_chunk = len / chunks;
-	while(a)
+	while (a)
 	{
 		assigned_chunk = (a->rank / nodes_per_chunk) + 1;
 		if (assigned_chunk > chunks)
@@ -78,4 +79,3 @@ void	set_chunk(t_stack_node *a, int len, int	chunks)
 		a = a->next;
 	}
 }
-

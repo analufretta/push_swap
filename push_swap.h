@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:13 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 16:40:22 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 09:37:23 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "libft.h"
 # include <limits.h>
 # include <stdbool.h>
-# include <unistd.h>
 # include <stdio.h>
+# include <unistd.h>
 
 typedef struct s_stack_node
 {
@@ -46,6 +46,11 @@ bool					is_sorted(t_stack_node *a);
 size_t					stack_len(t_stack_node *stack);
 void					sort_array(int *array, size_t len);
 
+/*Algo Utils*/
+int						ps_abs(int cost);
+int						total_cost(t_stack_node *b);
+int						ps_max(int cost_a, int cost_b);
+
 /*Find in Stack*/
 t_stack_node			*find_last_node(t_stack_node *stack);
 t_stack_node			*find_highest(t_stack_node *stack);
@@ -56,14 +61,12 @@ t_stack_node			*find_cheapest_node(t_stack_node *stack);
 /*Set in Stack*/
 void					set_current_position(t_stack_node *stack);
 void					set_allowed_nodes(t_stack_node *a, int chunks);
-void					set_allowed_back(t_stack_node *b, int chunks);
 void					set_target_node(t_stack_node *a, t_stack_node *b);
-
 
 /*Set rank & chunk*/
 void					set_rank(t_stack_node *a, size_t len);
 int						define_chunk_size(int len);
-void					set_chunk(t_stack_node *a, int len, int	chunks);
+void					set_chunk(t_stack_node *a, int len, int chunks);
 
 /*Cost Caltulations*/
 void					set_cost_move(t_stack_node *stack);
@@ -77,7 +80,8 @@ void					sort_until_five(t_stack_node **a, t_stack_node **b);
 
 /*Algorithm rotations*/
 void					rotate_cheapest_a(t_stack_node **a);
-void					rotate_cheapest_nodes(t_stack_node **a, t_stack_node **b);
+void					rotate_cheapest_nodes(t_stack_node **a,
+							t_stack_node **b);
 void					final_sort_asc(t_stack_node **a);
 
 /* Operations */

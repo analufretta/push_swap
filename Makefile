@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+         #
+#    By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/15 15:40:08 by afretta-          #+#    #+#              #
-#    Updated: 2026/01/20 14:12:31 by afretta-         ###   ########.fr        #
+#    Updated: 2026/01/21 09:38:09 by afretta-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRCS = 	main.c \
 		create_stack.c \
 		errors_free.c \
 		utils.c \
-		algorithm/algorithm_rotations.c \
+		algorithm/algo_utils.c \
+		algorithm/algo_rotations.c \
 		algorithm/cost_calculations.c \
 		algorithm/find_in_stack.c \
 		algorithm/push_swap.c \

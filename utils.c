@@ -89,11 +89,11 @@ void	sort_array(int *array, size_t len)
 
 	if (!array || len < 2)
 		return ;
-	while(len > 0)
+	while (len > 0)
 	{
 		sorted = true;
 		i = 0;
-		while(i	< (len -1))
+		while (i < (len - 1))
 		{
 			if (array[i] > array[i + 1])
 			{

@@ -15,7 +15,7 @@
 
 static bool	requisits_stack(char *value, t_stack_node **stack);
 static int	append_to_stack(int nb, t_stack_node **stack);
-static void set_new_node_config(t_stack_node *new, int nb);
+static void	set_new_node_config(t_stack_node *new, int nb);
 
 int	intitialize_stack_a(t_stack_node **stack, char **argv)
 {
@@ -94,7 +94,7 @@ static int	append_to_stack(int nb, t_stack_node **stack)
 	return (0);
 }
 
-static void set_new_node_config(t_stack_node *new, int nb)
+static void	set_new_node_config(t_stack_node *new, int nb)
 {
 	new->value = nb;
 	new->index = -1;

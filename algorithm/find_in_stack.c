@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_in_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:31:37 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 16:02:37 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 09:28:38 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_stack_node	*find_highest_rank(t_stack_node *stack)
 	highest_rank = stack;
 	while (stack)
 	{
-		if(stack->allowed)
+		if (stack->allowed)
 		{
 			if (stack->rank > highest)
 			{
@@ -89,15 +89,15 @@ t_stack_node	*find_highest_rank(t_stack_node *stack)
 
 t_stack_node	*find_cheapest_node(t_stack_node *stack)
 {
-	t_stack_node *cheapest_node;
-	
+	t_stack_node	*cheapest_node;
+
 	cheapest_node = NULL;
-	while(stack)
+	while (stack)
 	{
-		if(!stack->cheapest)
+		if (!stack->cheapest)
 			stack = stack->next;
 		else
-			break;
+			break ;
 	}
 	cheapest_node = stack;
 	return (cheapest_node);
