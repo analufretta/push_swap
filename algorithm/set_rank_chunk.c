@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:16:41 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/21 15:00:32 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:27:49 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,19 @@ int	define_chunk_size(int len)
 
 void	set_chunk(t_stack_node *a, int len, int chunks)
 {
-	int	nodes_per_chunk;
-	int	assigned_chunk;
+	int	base;
+	int	extra;
+	int	rank;
 
-	nodes_per_chunk = len / chunks;
+	base = len / chunks;
+	extra = len % chunks;
 	while (a)
 	{
-		assigned_chunk = (a->rank / nodes_per_chunk) + 1;
-		if (assigned_chunk > chunks)
-			assigned_chunk = chunks;
-		a->chunk = assigned_chunk;
+		rank = a->rank;
+		if (rank < (base + 1) * extra)
+			a->chunk = (rank / (base + 1)) + 1;
+		else
+			a->chunk = ((rank - ((base + 1) * extra)) / base) + extra + 1;
 		a = a->next;
 	}
 }

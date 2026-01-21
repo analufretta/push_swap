@@ -3,4 +3,4 @@ a.out
 libft/libft.a
 .DS.Store
 .vscode/
-*.txt
+*.a
