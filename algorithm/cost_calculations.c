@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 14:35:33 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/21 09:36:55 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:11:24 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	set_cheapest_node(t_stack_node *stack)
 	while (stack)
 	{
 		stack->cheapest = false;
-		if (stack->allowed)
+		if (stack->allowed == true)
 		{
 			cost = ps_abs(stack->cost);
 			if (cost < lower_cost)

@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/21 15:39:18 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:10:28 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	set_allowed_nodes(t_stack_node *a, int chunks)
 	}
 	while (a)
 	{
-		a->allowed = (a->chunk == current_chunk);
+		if(a->chunk == current_chunk)
+			a->allowed = true;
+		else
+			a->allowed = false;
 		a = a->next;
 	}
 }

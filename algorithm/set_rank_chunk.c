@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:16:41 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/21 15:27:49 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:32:55 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ void	set_rank(t_stack_node *a, size_t len)
 {
 	int		*array;
 	size_t	i;
+	// t_stack_node *tmp;
 
 	array = (int *)malloc(sizeof(int) * (len));
 	if (!array)
 		return ;
 	i = 0;
+	// tmp = a;
 	while (a)
 	{
 		array[i] = a->value;
