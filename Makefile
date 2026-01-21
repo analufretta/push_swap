@@ -6,7 +6,7 @@
 #    By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/15 15:40:08 by afretta-          #+#    #+#              #
-#    Updated: 2026/01/21 16:59:15 by afretta-         ###   ########.fr        #
+#    Updated: 2026/01/21 17:47:18 by afretta-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,9 @@ SRCS = 	main.c \
 		utils.c \
 		algorithm/algo_utils.c \
 		algorithm/algo_rotations.c \
-		algorithm/cost_calculations.c \
 		algorithm/find_in_stack.c \
 		algorithm/push_swap.c \
 		algorithm/set_in_stack.c \
-		algorithm/set_rank_chunk.c \
 		algorithm/tiny_sort.c \
 		operations/push.c \
 		operations/reverse.c \

@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:31:37 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/21 09:28:38 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:41:49 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,30 +61,6 @@ t_stack_node	*find_lowest(t_stack_node *stack)
 		stack = stack->next;
 	}
 	return (lowest_node);
-}
-
-t_stack_node	*find_highest_rank(t_stack_node *stack)
-{
-	t_stack_node	*highest_rank;
-	int				highest;
-
-	if (!stack)
-		return (NULL);
-	highest = stack->rank;
-	highest_rank = stack;
-	while (stack)
-	{
-		if (stack->allowed)
-		{
-			if (stack->rank > highest)
-			{
-				highest = stack->rank;
-				highest_rank = stack;
-			}
-		}
-		stack = stack->next;
-	}
-	return (highest_rank);
 }
 
 t_stack_node	*find_cheapest_node(t_stack_node *stack)

@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:45:46 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/09 10:51:39 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:44:08 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,33 +79,4 @@ size_t	stack_len(t_stack_node *stack)
 		len++;
 	}
 	return (len);
-}
-
-void	sort_array(int *array, size_t len)
-{
-	int		tmp;
-	size_t	i;
-	bool	sorted;
-
-	if (!array || len < 2)
-		return ;
-	while (len > 0)
-	{
-		sorted = true;
-		i = 0;
-		while (i < (len - 1))
-		{
-			if (array[i] > array[i + 1])
-			{
-				tmp = array[i];
-				array[i] = array[i + 1];
-				array[i + 1] = tmp;
-				sorted = false;
-			}
-			i++;
-		}
-		if (sorted)
-			break ;
-		len--;
-	}
 }

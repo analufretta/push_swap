@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:07:39 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 14:35:06 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:43:33 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,8 @@ static void	set_new_node_config(t_stack_node *new, int nb)
 {
 	new->value = nb;
 	new->index = -1;
-	new->rank = -1;
 	new->cost = 0;
-	new->chunk = 0;
 	new->target_node = NULL;
-	new->allowed = false;
 	new->cheapest = false;
 	new->next = NULL;
 	new->prev = NULL;

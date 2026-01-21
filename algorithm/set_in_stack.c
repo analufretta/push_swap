@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:13:58 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/21 17:10:28 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:46:23 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,6 @@ void	set_current_position(t_stack_node *stack)
 		stack->index = index;
 		index++;
 		stack = stack->next;
-	}
-}
-
-void	set_allowed_nodes(t_stack_node *a, int chunks)
-{
-	int				current_chunk;
-	t_stack_node	*current;
-
-	current_chunk = 1;
-	while (current_chunk <= chunks)
-	{
-		current = a;
-		while (current && current->chunk != current_chunk)
-			current = current->next;
-		if (current)
-			break ;
-		current_chunk++;
-	}
-	while (a)
-	{
-		if(a->chunk == current_chunk)
-			a->allowed = true;
-		else
-			a->allowed = false;
-		a = a->next;
 	}
 }
 
@@ -79,4 +54,43 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 			b->target_node = target_node;
 		b = b->next;
 	}
+}
+
+void	set_cost_move(t_stack_node *stack)
+{
+	size_t	len;
+	int		medium;
+
+	len = stack_len(stack);
+	medium = len / 2;
+	while (stack)
+	{
+		if (stack->index <= medium)
+			stack->cost = stack->index;
+		else
+			stack->cost = stack->index - (int)len;
+		stack = stack->next;
+	}
+}
+
+void	set_cheapest_move(t_stack_node *b)
+{
+	int				push_cost;
+	int				lowest_cost;
+	t_stack_node	*cheapet_node;
+
+	lowest_cost = INT_MAX;
+	cheapet_node = NULL;
+	while (b)
+	{
+		b->cheapest = false;
+		push_cost = total_cost(b);
+		if (push_cost < lowest_cost)
+		{
+			cheapet_node = b;
+			lowest_cost = push_cost;
+		}
+		b = b->next;
+	}
+	cheapet_node->cheapest = true;
 }

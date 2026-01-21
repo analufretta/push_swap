@@ -91,6 +91,6 @@ No code was copied; all AI usage was for guidance and explanation purposes only.
 
 **Data structure**: Doubly-linked list to represent stacks for efficient rotations and push operations.
 
-**Algorithm**: Chunk-based sorting with cost analysis to minimize total operations.
+**Algorithm**: Turk-algorithm: sorting with cost analysis to minimize total operations.
 
 **Language**: C
