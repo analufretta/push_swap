@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_rotations.c                              :+:      :+:    :+:   */
+/*   algo_rotations.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afretta- <afretta-@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:43:56 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 16:05:19 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:09:14 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	rotate_cheapest_nodes(t_stack_node **a, t_stack_node **b)
 	if (cheapest_node->cost > 0 && cheapest_node->target_node->cost > 0)
 		while (*a != cheapest_node->target_node && *b != cheapest_node)
 			rotate_both(a, b);
-	else if (cheapest_node->cost < 0 && cheapest_node->target_node < 0)
+	else if (cheapest_node->cost < 0 && cheapest_node->target_node->cost < 0)
 		while (*a != cheapest_node->target_node && *b != cheapest_node)
 			rev_rotate_both(a, b);
 	while (*a != cheapest_node->target_node)
