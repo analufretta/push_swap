@@ -48,6 +48,17 @@ ruby -e "puts (1..100).to_a.shuffle.join(' ')" > 100numbers.txt
 ruby -e "puts Array.new(500) { rand(-2_147_483_648..2_147_483_647) }.join(' ')" > 500numbers.txt
 ./push_swap $(cat 500numbers.txt)
 ```
+You can could the number of operations:
+
+```bash
+./push_swap $(cat 500numbers.txt) | wc -l
+```
+
+You can check the result with the checker programm:
+
+```bash
+./push_swap $(cat ./tests/500numbers.txt) | ./checker/checker_Mac $(cat ./tests/500numbers.txt)
+```
 
 ### Resources
 
