@@ -67,11 +67,13 @@ You can check the result with the checker programm:
 Stack and linked list tutorials:
 
 https://www.youtube.com/watch?v=NobHlGUjV3g
+
 https://www.geeksforgeeks.org/stack-data-structure/
 
 Sorting algorithm references:
 
 https://www.youtube.com/watch?v=Y95a-8oNqps
+
 https://medium.com/@ayogun/push-swap-c1f5d2d41e97
 
 
