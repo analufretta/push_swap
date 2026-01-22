@@ -8,8 +8,6 @@ The **push_swap** project is a sorting algorithm challenge. Its goal is to sort 
 
 The main objectives are:
 
-- Rank elements in the stack.
-- Divide the dataset into chunks to optimize pushing.
 - Push and rotate elements between stacks to sort them using the minimum number of moves.
 - Calculate the cost of operations to determine the most efficient sequence.
 

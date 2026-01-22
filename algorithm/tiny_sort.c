@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:06:35 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/20 14:33:48 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:17:21 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	push_smallest_to_b(t_stack_node **a, t_stack_node **b)
 	smallest = find_lowest(*a);
 	len = stack_len(*a);
 	middle = len / 2;
+	set_current_position(*a);
 	while (*a != smallest)
 	{
 		if (smallest->index >= middle)
