@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This test was created by sde-koni 42 student (Stijn De Koning)
+
 # ./push_swap $(shuf -i 0-4000000 -n 10 | awk '{print $1 - 2000000}')
 ITERATIONS=1000
 
