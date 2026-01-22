@@ -6,7 +6,7 @@
 /*   By: afretta- <afretta-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:40:10 by afretta-          #+#    #+#             */
-/*   Updated: 2026/01/22 15:15:22 by afretta-         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:52:26 by afretta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static int	push_swap(t_stack_node **a, t_stack_node **b)
 
 	if (is_sorted(*a))
 		return (0);
+	error_and_free(a);
 	len_a = stack_len(*a);
 	if (len_a == 2)
 		swap_a(a);
