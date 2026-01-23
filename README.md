@@ -15,9 +15,29 @@ The main objectives are:
 
 ### Compilation
 
+To compile the project, run:
+
 ```bash
 make
 ```
+This command generates the \push_swap\ executable.
+
+To clean object files and the executable:
+
+```bash
+make clean
+```
+Removes object files
+
+```bash
+make fclean
+```
+Removes object files and the executable
+
+```bash
+make re
+```
+Rebuilds everything
 
 ### Execution
 
